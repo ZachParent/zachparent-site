@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
+    "build:nbconvert": "jupyter nbconvert --to markdown --output-dir ./src/posts ./src/posts/*.ipynb",
     "build:11ty": "eleventy --quiet",
     "build:rollup": "rollup -c",
+    "build:copy_images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist",
     "clean": "rimraf dist",
     "dev": "npm-run-all clean build:* -p dev:*",
     "dev:11ty": "eleventy --serve --quiet",
