@@ -2,7 +2,7 @@
   "name": "11r",
   "description": "america's favorite eleventy blog template",
   "url": "https://reeseschultz.github.io",
-  "baseUrl": "/11r/",
+  "baseUrl": "/",
   "author": {
     "handle": "@ReeseCodes",
     "name": "Reese Schultz"
