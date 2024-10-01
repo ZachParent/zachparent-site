@@ -1,11 +1,11 @@
 {
-  "name": "11r",
-  "description": "america's favorite eleventy blog template",
+  "name": "Zach Parent",
+  "description": "wowie",
   "url": "https://reeseschultz.github.io",
   "baseUrl": "/",
   "author": {
-    "handle": "@ReeseCodes",
-    "name": "Reese Schultz"
+    "handle": "@ZachParent",
+    "name": "Zach Parent"
   },
   "images": {
     "twitter": "twitter.jpg",
