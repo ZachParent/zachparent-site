@@ -3,13 +3,13 @@
   "author": "Reese Schultz",
   "license": "MIT",
   "scripts": {
+    "nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts",
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
-    "build:nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts",
     "build:11ty": "eleventy --quiet",
     "build:rollup": "rollup -c",
-    "build:copy_images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist",
+    "copy-images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist",
     "clean": "rimraf dist",
-    "dev": "npm-run-all clean build:* -p dev:*",
+    "dev": "npm-run-all clean nbconvert build:* -p dev:* copy-images",
     "dev:11ty": "eleventy --serve --quiet",
     "dev:rollup": "rollup -c -w",
     "build-ghpages": "npm run build"
