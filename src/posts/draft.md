@@ -6,8 +6,8 @@ date: 1945-05-05
 updatedDate: 1945-05-05
 tags:
   - post
-  - orcas
-  - beer
+  - ai
+  - writing
 draft: true
 ---
 

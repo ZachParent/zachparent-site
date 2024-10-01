@@ -6,7 +6,7 @@ date: 1918-11-04
 updatedDate: 1918-11-04
 tags:
   - post
-  - stoicism
+  - writing
 ---
 
 ### Lorem
