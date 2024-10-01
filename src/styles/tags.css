@@ -19,26 +19,14 @@
   content: "#";
 }
 
-.tag.cats {
+.tag.code {
   @apply bg-red-500;
 }
 
-.tag.enchiladas {
+.tag.ai {
   @apply text-gray-900 bg-yellow-500;
 }
 
-.tag.beer {
+.tag.writing {
   @apply bg-blue-500;
-}
-
-.tag.spirituality {
-  @apply bg-indigo-500;
-}
-
-.tag.orcas {
-  @apply bg-purple-500;
-}
-
-.tag.stoicism {
-  @apply bg-pink-500;
 }
