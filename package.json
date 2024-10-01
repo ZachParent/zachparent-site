@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
-    "build:nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl --output-dir ./src/posts ./src/posts/*.ipynb",
+    "build:nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts",
     "build:11ty": "eleventy --quiet",
     "build:rollup": "rollup -c",
     "build:copy_images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist",
