@@ -2,7 +2,7 @@
   "name": "Zach Parent",
   "description": "Data for good. Good for you.",
   "url": "https://zachparent.com",
-  "baseUrl": "/",
+  "baseUrl": "/zachparent-site/",
   "author": {
     "handle": "@ZachParent",
     "name": "Zach Parent"
