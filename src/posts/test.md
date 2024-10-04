@@ -23,5 +23,5 @@ plt.show()
 ```
 
 
-![png](../test_files/test_1_0.png)
+![png](/zachparent-site/test_files/test_1_0.png)
 

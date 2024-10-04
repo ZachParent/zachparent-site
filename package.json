@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
     "build:11ty": "eleventy --pathprefix=/zachparent-site/ --quiet",
     "build:rollup": "rollup -c",
-    "copy-images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist/post/",
+    "copy-images": "rsync -av --include='*/' --include='*.png' --exclude='*' ./src/posts/ ./dist/",
     "clean": "rimraf dist",
     "dev": "npm-run-all clean nbconvert build:* -p dev:* copy-images",
     "dev:11ty": "eleventy --serve --pathprefix=/zachparent-site/ --quiet",
