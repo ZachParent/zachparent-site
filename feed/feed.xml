@@ -3,7 +3,7 @@
 	<title>Zach Parent</title>
 	<subtitle>Data for good. Good for you.</subtitle>
 	
-	<link href="https://zachparent.com/feed/feed.xml" rel="self"/>
+	<link href="https://zachparent.com/zachparent-site/feed/feed.xml" rel="self"/>
 	<link href="https://zachparent.com"/>
 	<updated>2016-10-09T00:00:00Z</updated>
 	<id>https://example.com/</id>
@@ -13,9 +13,9 @@
 	
 	<entry>
 		<title>Test</title>
-		<link href="https://zachparent.com/post/test/"/>
+		<link href="https://zachparent.com/zachparent-site/post/test/"/>
 		<updated>2016-10-09T00:00:00Z</updated>
-		<id>https://zachparent.com/post/test/</id>
+		<id>https://zachparent.com/zachparent-site/post/test/</id>
 		<content type="html">&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; np&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; matplotlib&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pyplot &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; plt&lt;br /&gt;&lt;br /&gt;x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;linspace&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;y &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sin&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;plot&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;plt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;show&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&quot;https://zachparent.com/test_files/test_1_0.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 </content>
@@ -23,27 +23,27 @@
 	
 	<entry>
 		<title>Deadbeef Decrementation</title>
-		<link href="https://zachparent.com/post/deadbeef-decrementation/"/>
+		<link href="https://zachparent.com/zachparent-site/post/deadbeef-decrementation/"/>
 		<updated>2016-10-09T00:00:00Z</updated>
-		<id>https://zachparent.com/post/deadbeef-decrementation/</id>
+		<id>https://zachparent.com/zachparent-site/post/deadbeef-decrementation/</id>
 		<content type="html">&lt;pre class=&quot;language-nasm&quot;&gt;&lt;code class=&quot;language-nasm&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;;run on Linux with: nasm -felf64 decrement.asm &amp;amp;&amp;amp; ld decrement.o &amp;amp;&amp;amp; ./a.out&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;global _start&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token keyword&quot;&gt;section .text&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token label function&quot;&gt;_start:&lt;/span&gt;&lt;br /&gt;  mov &lt;span class=&quot;token register variable&quot;&gt;rax&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;0xDEADBEEF&lt;/span&gt;&lt;br /&gt;  call decrement&lt;br /&gt;  call exit&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token label function&quot;&gt;decrement:&lt;/span&gt;&lt;br /&gt;  dec &lt;span class=&quot;token register variable&quot;&gt;rax&lt;/span&gt;&lt;br /&gt;  cmp &lt;span class=&quot;token register variable&quot;&gt;rax&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;br /&gt;  jg decrement&lt;br /&gt;  ret&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token label function&quot;&gt;exit:&lt;/span&gt;&lt;br /&gt;  mov &lt;span class=&quot;token register variable&quot;&gt;rax&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;60&lt;/span&gt;&lt;br /&gt;  syscall&lt;br /&gt;&lt;span class=&quot;token string&quot;&gt;``&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>Interior Crocodile Alligator, I Drive a Chevrolet Movie Theater</title>
-		<link href="https://zachparent.com/interior-crocodile-alligator/"/>
+		<link href="https://zachparent.com/zachparent-site/interior-crocodile-alligator/"/>
 		<updated>2008-09-19T00:00:00Z</updated>
-		<id>https://zachparent.com/interior-crocodile-alligator/</id>
+		<id>https://zachparent.com/zachparent-site/interior-crocodile-alligator/</id>
 		<content type="html">&lt;p&gt;To truly understand the captivating phenomenon that is the &lt;a href=&quot;https://www.youtube.com/watch?v=0OEbuDP5Yys&quot;&gt;Interior Crocodile Alligator song&lt;/a&gt;, you must be familiar with its &lt;a href=&quot;https://youtu.be/UXQ38gUsB20&quot;&gt;history&lt;/a&gt;.&lt;/p&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>Why My Practice of Thelema Makes Me Better at World of Warcraft</title>
-		<link href="https://zachparent.com/post/why-my-practice-of-thelema-makes-me-better-at-world-of-warcraft/"/>
+		<link href="https://zachparent.com/zachparent-site/post/why-my-practice-of-thelema-makes-me-better-at-world-of-warcraft/"/>
 		<updated>1974-09-09T00:00:00Z</updated>
-		<id>https://zachparent.com/post/why-my-practice-of-thelema-makes-me-better-at-world-of-warcraft/</id>
+		<id>https://zachparent.com/zachparent-site/post/why-my-practice-of-thelema-makes-me-better-at-world-of-warcraft/</id>
 		<content type="html">&lt;p&gt;⛧⛧⛧&lt;/p&gt;
 &lt;p&gt;ivil wea qep&lt;/p&gt;
 &lt;p&gt;⛧⛧⛧&lt;/p&gt;
@@ -52,9 +52,9 @@
 	
 	<entry>
 		<title>Shrek Predicted the COVID-19 Pandemic</title>
-		<link href="https://zachparent.com/post/shrek-predicted-the-covid-19-pandemic/"/>
+		<link href="https://zachparent.com/zachparent-site/post/shrek-predicted-the-covid-19-pandemic/"/>
 		<updated>1921-04-16T00:00:00Z</updated>
-		<id>https://zachparent.com/post/shrek-predicted-the-covid-19-pandemic/</id>
+		<id>https://zachparent.com/zachparent-site/post/shrek-predicted-the-covid-19-pandemic/</id>
 		<content type="html">&lt;p&gt;Please watch &lt;a href=&quot;https://youtu.be/dQw4w9WgXcQ&quot;&gt;this informational video&lt;/a&gt; to learn more.&lt;/p&gt;
 &lt;p&gt;Thank you for your time.&lt;/p&gt;
 </content>
@@ -62,9 +62,9 @@
 	
 	<entry>
 		<title>Lorem Ipsum</title>
-		<link href="https://zachparent.com/post/lorem-ipsum/"/>
+		<link href="https://zachparent.com/zachparent-site/post/lorem-ipsum/"/>
 		<updated>1918-11-04T00:00:00Z</updated>
-		<id>https://zachparent.com/post/lorem-ipsum/</id>
+		<id>https://zachparent.com/zachparent-site/post/lorem-ipsum/</id>
 		<content type="html">&lt;h3 id=&quot;lorem&quot; tabindex=&quot;-1&quot;&gt;Lorem&lt;/h3&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue quisque egestas diam in arcu cursus euismod quis. Ac auctor augue mauris augue. Convallis tellus id interdum velit laoreet id donec ultrices. Aliquam eleifend mi in nulla posuere. Pretium quam vulputate dignissim suspendisse in est. Orci sagittis eu volutpat odio facilisis mauris sit. Non nisi est sit amet facilisis magna etiam tempor. Id diam maecenas ultricies mi eget. Sed velit dignissim sodales ut. Purus semper eget duis at. Pellentesque sit amet porttitor eget dolor morbi. Faucibus a pellentesque sit amet porttitor. Orci a scelerisque purus semper eget duis. Mauris commodo quis imperdiet massa tincidunt. Pulvinar elementum integer enim neque. In vitae turpis massa sed elementum. Rhoncus dolor purus non enim.&lt;/p&gt;
 &lt;h3 id=&quot;ipsum&quot; tabindex=&quot;-1&quot;&gt;Ipsum&lt;/h3&gt;
@@ -80,9 +80,9 @@
 	
 	<entry>
 		<title>Son of Lorem Ipsum</title>
-		<link href="https://zachparent.com/post/son-of-lorem-ipsum/"/>
+		<link href="https://zachparent.com/zachparent-site/post/son-of-lorem-ipsum/"/>
 		<updated>1908-12-12T00:00:00Z</updated>
-		<id>https://zachparent.com/post/son-of-lorem-ipsum/</id>
+		<id>https://zachparent.com/zachparent-site/post/son-of-lorem-ipsum/</id>
 		<content type="html">&lt;h3 id=&quot;lorem&quot; tabindex=&quot;-1&quot;&gt;Lorem&lt;/h3&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue quisque egestas diam in arcu cursus euismod quis. Ac auctor augue mauris augue. Convallis tellus id interdum velit laoreet id donec ultrices. Aliquam eleifend mi in nulla posuere. Pretium quam vulputate dignissim suspendisse in est. Orci sagittis eu volutpat odio facilisis mauris sit. Non nisi est sit amet facilisis magna etiam tempor. Id diam maecenas ultricies mi eget. Sed velit dignissim sodales ut. Purus semper eget duis at. Pellentesque sit amet porttitor eget dolor morbi. Faucibus a pellentesque sit amet porttitor. Orci a scelerisque purus semper eget duis. Mauris commodo quis imperdiet massa tincidunt. Pulvinar elementum integer enim neque. In vitae turpis massa sed elementum. Rhoncus dolor purus non enim.&lt;/p&gt;
 &lt;h3 id=&quot;ipsum&quot; tabindex=&quot;-1&quot;&gt;Ipsum&lt;/h3&gt;
