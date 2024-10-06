@@ -198,3 +198,7 @@ tr {
 th, td {
   @apply border border-gray-500 p-2;
 }
+
+img {
+  @apply w-full;
+}
