@@ -1,5 +1,6 @@
 module.exports = config => {
   const markdownIt = new require('markdown-it')({
+    html: true,
     typographer: true,
     linkify: true,
   });

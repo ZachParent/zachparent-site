@@ -178,3 +178,23 @@ hr {
 #privacy-notice-button-container:hover {
   @apply bg-gray-500 rounded cursor-pointer;
 }
+
+table {
+  @apply w-full border-2 rounded-lg;
+}
+
+thead {
+  @apply bg-gray-800 text-white;
+}
+
+tbody {
+  @apply bg-gray-700 text-right;
+}
+
+tr {
+  @apply even:bg-gray-600 hover:bg-gray-800;
+}
+
+th, td {
+  @apply border border-gray-500 p-2;
+}
