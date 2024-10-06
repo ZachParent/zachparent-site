@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts",
+    "nbconvert:watch": "nodemon --watch ./src/notebooks --ext ipynb --exec 'jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts'",
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
     "build:11ty": "eleventy --pathprefix=/zachparent-site/ --quiet",
     "build:rollup": "rollup -c",
@@ -18,6 +19,7 @@
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@rollup/plugin-replace": "^4.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
@@ -26,7 +28,9 @@
     "autoprefixer": "^10.4.2",
     "cross-env": "^7.0.3",
     "eleventy-plugin-nesting-toc": "^1.3.0",
+    "katex": "^0.16.11",
     "markdown-it-anchor": "^8.4.1",
+    "nodemon": "^3.1.7",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
@@ -37,8 +41,6 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "tailwindcss": "^3.0.23",
-    "@iktakahiro/markdown-it-katex": "^4.0.1",
-    "katex": "^0.16.11"
+    "tailwindcss": "^3.0.23"
   }
 }
