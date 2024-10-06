@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    
+    <meta itemprop="name" content="Binary Representation of Real Numbers | Zach Parent">
+    <meta itemprop="description" content="An introduction to binary representation of real numbers.">
+
+    
+    <meta name="twitter:title" content="Binary Representation of Real Numbers | Zach Parent">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="An introduction to binary representation of real numbers.">
+    <meta name="twitter:site" content="@ZachParent">
+    <meta name="twitter:creator" content="@ZachParent">
+    <meta name="twitter:image:src" content="https://zachparent.com/zachparent-site/twitter.jpg">
+
+    
+    <meta name="og:title" content="Binary Representation of Real Numbers | Zach Parent">
+    <meta name="og:description" content="An introduction to binary representation of real numbers.">
+    <meta name="og:image" content="https://zachparent.com/zachparent-site/og.jpg">
+    <meta name="og:url" content="https://zachparent.com/zachparent-site/">
+    <meta name="og:site_name" content="Zach Parent">
+    <meta name="og:locale" content="en_GB">
+    <meta name="og:type" content="website">
+
+    <link rel="icon" type="image/x-icon" href="/zachparent-site/favicon.ico" />
+
+    <title>Binary Representation of Real Numbers | Zach Parent</title>
+
+    <link rel="stylesheet" href="/zachparent-site/assets/main.bundle.css">
+
+    
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- top-notice -->
+
+    <header>
+  <nav class="container mx-auto max-w-3xl px-8 pt-2 flex flex-wrap justify-between">
+    <div>
+      <h1>
+        <a href="/zachparent-site/">Zach Parent</a>
+      </h1>
+      <p>Data for good. Good for you.</p>
+    </div>
+
+    <ul class="flex flex-wrap sm:w-32 w-full mt-6 md:justify-between justify-evenly">
+      <li>
+        <a href="/zachparent-site/about">About</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    <main class="container mx-auto max-w-3xl p-8 grow">
+      
+    <p></p>
+    <div>
+        <h2>Binary Representation of Real Numbers</h2>
+
+        
+            <p class="excerpt">An introduction to binary representation of real numbers.</p>
+        
+
+        
+            <div class="mb-2">
+                <a class="tag code" href="/zachparent-site/tag/code">code</a>
+            </div>
+        
+
+        
+            
+                <p class="text-sm italic">Created on
+                    <span datetime="Sun Oct 06 2024 00:00:00 GMT+0000 (Coordinated Universal Time)">October 6, 2024</span>.</p>
+            
+        
+
+        
+            
+            
+            <p class="text-sm mb-4">
+                <a href="https://github.com/ZachParent/zachparent-site/blob/main/./src/notebooks/binary-representation-of-real-numbers.ipynb" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                    View on GitHub
+                </a>
+            </p>    
+        
+
+        <div class="content post">
+            
+
+            <pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np</code></pre>
+<pre class="language-python"><code class="language-python">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><br>epsilon <span class="token operator">=</span> <span class="token number">10</span><span class="token operator">**</span><span class="token operator">-</span><span class="token number">6</span><br>r <span class="token operator">=</span> <span class="token number">0.637197</span><br>expected_encoded_r <span class="token operator">=</span> <span class="token string">'1000101110110101000110'</span><br></code></pre>
+<pre class="language-python"><code class="language-python">k <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>ceil<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log2<span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">-</span> a<span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>epsilon<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'k:\t\t'</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'expected_k:\t'</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>expected_encoded_r<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<pre><code>k:		 21
+expected_k:	 22
+</code></pre>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>r<span class="token punctuation">:</span> <span class="token builtin">float</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span><br>    <span class="token comment"># Original equation: r_encoded = floor((r - a) / (b - a) * (2^k - 1) + 1/2)</span><br>    normalized_r <span class="token operator">=</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> a<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>b <span class="token operator">-</span> a<span class="token punctuation">)</span><br>    scaled_r <span class="token operator">=</span> normalized_r <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><br>    rounded_r <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>scaled_r <span class="token operator">+</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><br>    binary_representation <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>rounded_r<span class="token punctuation">:</span><span class="token format-spec">b</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><br>    <span class="token keyword">return</span> binary_representation<br><br><span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>encoded_r<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">float</span><span class="token punctuation">:</span><br>    <span class="token comment"># Original equation: a + int(encoded_r, 2) * (b-a)/(2**k - 1)</span><br>    encoded_int <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>encoded_r<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><br>    scaling_factor <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">-</span> a<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><br>    scaled_value <span class="token operator">=</span> encoded_int <span class="token operator">*</span> scaling_factor<br>    decoded_r <span class="token operator">=</span> a <span class="token operator">+</span> scaled_value<br>    <span class="token keyword">return</span> decoded_r</code></pre>
+<pre class="language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'r:\t\t\t'</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'expected_encoded_r:\t'</span><span class="token punctuation">,</span> expected_encoded_r<span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'encoded_r:\t\t'</span><span class="token punctuation">,</span> enc<span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'dec(encoded_r):\t\t'</span><span class="token punctuation">,</span> dec<span class="token punctuation">(</span>enc<span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'rounded dec(encoded_r):\t'</span><span class="token punctuation">,</span> <span class="token builtin">round</span><span class="token punctuation">(</span>dec<span class="token punctuation">(</span>enc<span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token builtin">int</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>floor<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log10<span class="token punctuation">(</span>epsilon<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<pre><code>r:			 0.637197
+expected_encoded_r:	 1000101110110101000110
+
+encoded_r:		 100010111011010100011
+dec(encoded_r):		 0.637196844671652
+rounded dec(encoded_r):	 0.637197
+</code></pre>
+
+        </div>
+            <p class="uppercase text-xs mt-6">Next</p>
+            <p class="font-bold mb-2">
+                <a href="/zachparent-site/post/counting-ones-problem/">Counting Ones Problem</a>
+            </p>
+        
+            <p class="uppercase text-xs mt-6">Previous</p>
+
+            <p class="font-bold">
+                <a href="/zachparent-site/post/test/">Test</a>
+            </p>
+        
+    </div>
+
+    </main>
+    <footer class="bg-gray-600 pb-10">
+  <p class="block text-center text-sm mb-6">
+    Built by
+    <a target="_blank" href="https://github.com/zachparent">
+      Zach Parent
+    </a>
+  </p>
+
+  <a class="block text-center text-sm" href="/zachparent-site/privacy-policy">Privacy Policy</a>
+</footer>
+    <div id="privacy-notice" style="height: 5em" class="sticky bottom-0 py-5 px-2 bg-gray-800 w-full flex justify-center">
+    <p class="px-2 text-sm self-center">By using this site, you agree that you have read and understand its <a href="/zachparent-site/privacy-policy">Privacy Policy</a>.</p>
+    <button aria-label="dismiss" style="height: 32px; width: 32px" class="flex justify-center align-center" id="privacy-notice-button-container">
+        <svg id="privacy-notice-button" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"/></svg> 
+    </button>
+</div>
+
+    <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="/zachparent-site/assets/main.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  </body>
+</html>
