@@ -5,7 +5,9 @@ module.exports = config => {
   });
 
   const markdownItAnchor = require('markdown-it-anchor');
+  const markdownItKatex = require('@iktakahiro/markdown-it-katex');
   markdownIt.use(markdownItAnchor);
+  markdownIt.use(markdownItKatex);
 
   config.setLibrary('md', markdownIt);
 
