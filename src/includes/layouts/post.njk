@@ -34,6 +34,16 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
             {% endif %}
         {% endif %}
 
+        {% if page.inputPath %}
+            {% set githubPath = page.inputPath | replace('/posts/', '/notebooks/') | replace('.md', '.ipynb') %}
+            {% set githubUrl = "https://github.com/ZachParent/zachparent-site/blob/main/" + githubPath %}
+            <p class="text-sm mb-4">
+                <a href="{{ githubUrl }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                    View on GitHub
+                </a>
+            </p>    
+        {% endif %}
+
         <div class="content post">
             {% if content | toc %}
                 <hr />
