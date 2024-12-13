@@ -1,5 +1,5 @@
 /* Font (see https://fonts.google.com) */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* Prism Code Highlighting Theme (see https://prismjs.com) */
 @import url('https://cdn.jsdelivr.net/npm/prism-themes@1.5.0/themes/prism-dracula.css');
@@ -11,7 +11,7 @@
 html,
 body {
   @apply antialiased text-gray-300 bg-gray-900;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 h1,
