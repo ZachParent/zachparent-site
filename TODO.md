@@ -1,0 +1,2 @@
+- [ ] Show tags on posts ([src/includes/posts.njk](src/includes/posts.njk))
+- [ ] Add list of tags ([src/includes/tags.njk](src/includes/tags.njk))
