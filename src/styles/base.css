@@ -6,6 +6,7 @@
 
 :not(pre) > code[class*="language-"] { /* Fixes issue where theme removes indentation. */
 	white-space: pre;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 html,
