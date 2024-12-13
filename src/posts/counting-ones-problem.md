@@ -7,6 +7,7 @@ updatedDate: 2024-10-06
 tags:
   - post
   - code
+draft: true
 ---
 
 ### What is a genetic algorithm?
