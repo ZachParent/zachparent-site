@@ -34,10 +34,10 @@
 
     {% block head %}{% endblock %}
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col mx-auto max-w-5xl p-4 sm:px-8 min-h-screen">
     {% include 'top-notice.njk' %}
     {% include 'header.njk' %}
-    <main class="container mx-auto max-w-3xl p-8 grow">
+    <main class="container grow">
       {% block body %}{% endblock %}
     </main>
     {% include 'footer.njk' %}

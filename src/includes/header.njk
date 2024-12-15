@@ -1,15 +1,17 @@
 <header>
-  <nav class="container mx-auto max-w-3xl px-8 pt-2 flex flex-wrap justify-between">
+  <nav class="container pt-2 flex flex-wrap justify-between">
     <div>
       <h1>
-        <a href="{{ site.baseUrl }}">{{ site.name }}</a>
+        <a class="text-hunyadi_yellow hover:text-hunyadi_yellow-700 hover:font-black"
+        href="{{ site.baseUrl }}">{{ site.name }}</a>
       </h1>
       <p>{{site.description}}</p>
     </div>
 
     <ul class="flex flex-wrap sm:w-32 w-full mt-6 md:justify-between justify-evenly">
       <li>
-        <a href="{{ site.baseUrl }}about">About</a>
+        <a class="text-orange_(pantone) hover:text-orange_(pantone)-700 hover:font-black"
+        href="{{ site.baseUrl }}about">About</a>
       </li>
     </ul>
   </nav>
