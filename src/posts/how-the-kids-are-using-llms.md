@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How are the kids using LLMs
+title: How the kids are using LLMs
 excerpt: Copying, pasting, revising, scheming, brainstorming, cheating and begging. We students turn to LLMs like ChatGPT for almost everything.
 date: 2024-12-15
 tags:
@@ -46,4 +46,4 @@ I also use them to check my understanding of lectures, but only after I've had a
 
 I think LLMs will continue to be a growing part of my workflow, and I'm making an effort to get better at working with them in ways that are deliberate and good for me in the long run.
 
-How are you using these powerful new tools.
+How are you using these powerful new tools?
