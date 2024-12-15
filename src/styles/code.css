@@ -9,7 +9,7 @@
 
  code[class*="language-"],
  pre[class*="language-"] {
-     @apply text-gray-100;
+     @apply text-charcoal-900;
      background: none;
      text-shadow: 0 1px rgba(0, 0, 0, 0.3);
      @apply font-jetbrains;
@@ -17,15 +17,15 @@
      @apply whitespace-pre;
      @apply break-normal;
      @apply leading-relaxed;
+     @apply selection:bg-robin_egg_blue-200;
  }
  
  /* Code blocks */
  pre[class*="language-"] {
-     @apply p-4;
+     @apply p-2 pt-6 sm:p-4;
      @apply my-2;
      @apply overflow-auto;
      @apply rounded-lg;
-     @apply bg-charcoal-100;
  }
  
  :not(pre) > code[class*="language-"],
@@ -40,11 +40,10 @@
      @apply whitespace-normal;
  }
  
- .token.comment,
  .token.prolog,
  .token.doctype,
  .token.cdata {
-     @apply text-hunyadi_yellow-800;
+     @apply text-charcoal-600;
  }
  
  .token.punctuation {
@@ -57,9 +56,7 @@
  
  .token.property,
  .token.tag,
- .token.constant {
-     @apply text-orange_(pantone);
- }
+ .token.constant,
  .token.symbol,
  .token.deleted {
      @apply text-orange_(pantone);
@@ -67,16 +64,19 @@
  
  .token.boolean,
  .token.number {
-     @apply text-hunyadi_yellow;
+     @apply text-hunyadi_yellow-500;
  }
  
  .token.selector,
- .token.attr-name,
+ .token.builtin,
+ .token.attr-name {
+     @apply text-orange_(pantone)-700;
+ }
  .token.string,
  .token.char,
- .token.builtin,
+ 
  .token.inserted {
-     @apply text-robin_egg_blue;
+     @apply text-robin_egg_blue-400 italic;
  }
  
  .token.operator,
@@ -89,14 +89,12 @@
  }
  
  .token.atrule,
- .token.attr-value,
- .token.function,
- .token.class-name {
+ .token.attr-value {
      @apply text-hunyadi_yellow;
  }
  
  .token.keyword {
-     @apply text-lapis_lazuli-800;
+     @apply text-lapis_lazuli-700;
  }
  
  .token.regex,
@@ -109,23 +107,20 @@
      @apply font-bold;
  }
  
- /* .token.italic {
-     @apply italic;
- } */
- 
  .token.entity {
      @apply cursor-help;
  }
  
  .token.function,
+ .token.def,
  .token.class-name {
-     @apply text-orange_(pantone)-600;
- }
- 
- .token.def {
      @apply text-orange_(pantone)-500 font-bold;
  }
  
+ .token.comment {
+     @apply text-hunyadi_yellow-800 italic;
+ }
+
  .token.string.docstring {
      @apply text-robin_egg_blue-300 italic;
  }

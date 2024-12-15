@@ -57,7 +57,7 @@ a {
 }
 
 p {
-  @apply sm:text-lg my-2 indent-8;
+  @apply sm:text-lg my-2;
 }
 
 pre {
@@ -117,7 +117,7 @@ hr {
 }
 
 .content > p {
-  @apply pt-3;
+  @apply pt-3 indent-8;
 }
 
 .excerpt {
