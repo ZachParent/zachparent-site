@@ -10,25 +10,19 @@ tags:
 published: true
 ---
 
-```nasm
-;run on Linux with: nasm -felf64 decrement.asm && ld decrement.o && ./a.out
+```python
+ONE_WORD_DESCRIPTION = "Fibonacci sequence generator."
+# Fibonacci sequence generator.
+def fibonacci(n):
+  """Fibonacci sequence generator."""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return b
 
-global _start
-
-section .text
-
-_start:
-  mov rax, 0xDEADBEEF
-  call decrement
-  call exit
-
-decrement:
-  dec rax
-  cmp rax, 0
-  jg decrement
-  ret
-
-exit:
-  mov rax, 60
-  syscall
 ```
