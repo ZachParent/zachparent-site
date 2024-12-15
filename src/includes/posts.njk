@@ -1,6 +1,6 @@
 <div>
     {% for post in posts %}
-        {% if not post.data.draft %}
+        {% if post.data.published %}
             <div class="mb-8 border-dotted border-b border-gray-300">
                 <h2>
                     <a class="block" href="{{ post.url | url }}">{{ post.data.title }}</a>

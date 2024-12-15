@@ -7,6 +7,7 @@ updatedDate: 2016-10-09
 tags:
   - post
   - ai
+published: true
 ---
 
 ```nasm

@@ -7,6 +7,7 @@ updatedDate: 1909-01-03
 tags:
   - post
   - ai
+published: true
 ---
 
 ### Lorem

@@ -58,14 +58,14 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
             {{ content | safe }}
         </div>
 
-        {%- set nextPost = collections['postsWithoutDrafts'] | getNextCollectionItem(page) %}
+        {%- set nextPost = collections['publishedPosts'] | getNextCollectionItem(page) %}
         {%- if nextPost %}
             <p class="uppercase text-xs mt-6">Next</p>
             <p class="font-bold mb-2">
                 <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
             </p>
         {% endif %}
-        {%- set previousPost = collections['postsWithoutDrafts'] | getPreviousCollectionItem(page) %}
+        {%- set previousPost = collections['publishedPosts'] | getPreviousCollectionItem(page) %}
         {%- if previousPost %}
             <p class="uppercase text-xs mt-6">Previous</p>
 

@@ -31,9 +31,9 @@ module.exports = config => {
 
   config.setDataDeepMerge(true);
 
-  config.addCollection('postsWithoutDrafts', (collection) =>
+  config.addCollection('publishedPosts', (collection) =>
     [...collection.getFilteredByGlob('src/posts/*.md')].filter(
-      (post) => !post.data.draft
+      (post) => post.data.published
     )
   );
 

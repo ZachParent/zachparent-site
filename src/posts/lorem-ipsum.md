@@ -7,6 +7,7 @@ updatedDate: 1918-11-04
 tags:
   - post
   - writing
+published: true
 ---
 
 ### Lorem

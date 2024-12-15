@@ -1,4 +1,4 @@
----
+{# ---
 pagination:
   data: collections
   size: 1
@@ -7,7 +7,7 @@ pagination:
   filter:
     - all
     - post
-    - draft
+    - published
 eleventyComputed:
   title: "{{ tag }}"
 permalink: /tag/{{ tag }}/
@@ -23,4 +23,4 @@ permalink: /tag/{{ tag }}/
   {% include "posts.njk" %}
 
   {% include "tags.njk" %}
-{% endblock %}
+{% endblock %} #}

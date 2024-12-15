@@ -7,6 +7,7 @@ updatedDate: 1974-09-09
 tags:
   - post
   - writing
+published: true
 ---
 
 ⛧⛧⛧
