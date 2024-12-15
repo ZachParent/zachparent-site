@@ -13,7 +13,7 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
             <p class="excerpt">{{ excerpt }}</p>
         {% endif %}
 
-        {% if tags %}
+        {# {% if tags %}
             <div class="mb-2">
                 {% for tag in tags %}
                     {%- if tag !== "post" -%}
@@ -21,7 +21,7 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
                     {%- endif -%}
                 {% endfor %}
             </div>
-        {% endif %}
+        {% endif %} #}
 
         {% if date %}
             {% if updatedDate and (date|string) !== (updatedDate|string) %}
@@ -34,7 +34,7 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
             {% endif %}
         {% endif %}
 
-        {% if page.inputPath %}
+        {# {% if page.inputPath %}
             {% set githubPath = page.inputPath | replace('/posts/', '/notebooks/') | replace('.md', '.ipynb') %}
             {% set githubUrl = "https://github.com/ZachParent/zachparent-site/blob/main/" + githubPath %}
             <p class="text-sm mb-4">
@@ -42,7 +42,7 @@ permalink: "{% if path %}{{ path | slug }}{% else %}{{'/post/'}}{{ title | slug 
                     View on GitHub
                 </a>
             </p>    
-        {% endif %}
+        {% endif %} #}
 
         <div class="content post">
             {% if content | toc %}
