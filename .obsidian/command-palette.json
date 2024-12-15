@@ -1,0 +1,9 @@
+{
+  "pinned": [
+    "obsidian-excalidraw-plugin:toggle-excalidraw-view",
+    "obsidian-excalidraw-plugin:convert-excalidraw",
+    "obsidian-linter:lint-file",
+    "obsidian-linter:lint-all-files",
+    "editor:toggle-source"
+  ]
+}

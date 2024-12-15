@@ -1,0 +1,15 @@
+{
+  "translucency": false,
+  "showViewHeader": true,
+  "cssTheme": "Vanilla AMOLED",
+  "theme": "system",
+  "accentColor": "",
+  "interfaceFontFamily": "JetBrains Mono",
+  "textFontFamily": "JetBrains Mono",
+  "monospaceFontFamily": "JetBrains Mono",
+  "enabledCssSnippets": [
+    "Colored Sidebar Items",
+    "Notebook Backgrounds",
+    "extrabold"
+  ]
+}
