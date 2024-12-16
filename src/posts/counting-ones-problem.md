@@ -230,7 +230,9 @@ plt.show()
 ```
 
 
-![png](/zachparent-site/counting-ones-problem_files/counting-ones-problem_13_0.png)
+    
+![png](counting-ones-problem_files/counting-ones-problem_13_0.png)
+    
 
 
 
@@ -254,7 +256,9 @@ plt.show()
 ```
 
 
-![png](/zachparent-site/counting-ones-problem_files/counting-ones-problem_14_0.png)
+    
+![png](counting-ones-problem_files/counting-ones-problem_14_0.png)
+    
 
 
 One thing I like about this particular example is how around generation 15, the algorithm drops the 1 in position 4, in exchange for 2 1s in positions 0 and 2. This illustrates the stochastic nature of the algorithm, and demonstrates the tradeoffs between exploration and exploitation, a key phenomenon in the study of evolutionary algorithms.

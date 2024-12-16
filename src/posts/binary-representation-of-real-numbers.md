@@ -81,7 +81,9 @@ plt.show()
 ```
 
 
-![png](/zachparent-site/binary-representation-of-real-numbers_files/binary-representation-of-real-numbers_4_0.png)
+    
+![png](binary-representation-of-real-numbers_files/binary-representation-of-real-numbers_4_0.png)
+    
 
 
 To confirm this is working as expected, let's try encoding many possible values and decoding them back to their original values.

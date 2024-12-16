@@ -19,7 +19,7 @@ I've even seen students open a new chat with *"Hello"*. When I asked her why she
 
 Whether we know it or not, and whether we admit it or not, how we use LLMs says something about our skills, our values, and our desires. Where we spend our time is what we give our attention is what we remember is what we learn. If we prompt away something, it's a declaration that we don't care about it and we won't learn it. Sometimes, that correctly reflects our values. 
 
-![png](/zachparent-site/attachments/how-the-kids-are-using-llms-1.excalidraw.svg)
+![png](attachments/how-the-kids-are-using-llms-1.excalidraw.svg)
 ### What is worth your time?
 
 - Is reading the assignment worth your time? *If not, ask ChatGPT!*

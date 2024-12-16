@@ -3,8 +3,8 @@
   "author": "Reese Schultz",
   "license": "MIT",
   "scripts": {
-    "nbconvert": "jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts",
-    "nbconvert:watch": "nodemon --watch ./src/notebooks --ext ipynb --exec 'jupyter nbconvert --to markdown --template ./src/my-markdown.tpl ./src/notebooks/*.ipynb --output-dir ./src/posts'",
+    "nbconvert": "jupyter nbconvert --to markdown ./src/notebooks/*.ipynb --output-dir ./src/posts",
+    "nbconvert:watch": "nodemon --watch ./src/notebooks --ext ipynb --exec 'jupyter nbconvert --to markdown ./src/notebooks/*.ipynb --output-dir ./src/posts'",
     "build": "cross-env NODE_ENV=production npm-run-all clean -p build:*",
     "build:11ty": "eleventy --pathprefix=/zachparent-site/ --quiet",
     "build:rollup": "rollup -c",
@@ -16,7 +16,8 @@
     "build-ghpages": "npm run build"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^5.0.0",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@iktakahiro/markdown-it-katex": "^4.0.1",

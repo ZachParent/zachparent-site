@@ -17,6 +17,30 @@ module.exports = config => {
     ul: false
   });
 
+  config.addPlugin(require('@11ty/eleventy-img').eleventyImageTransformPlugin, {
+		// which file extensions to process
+		// extensions: "html",
+    // svgShortCircuit: true,
+
+
+		// Add any other Image utility options here:
+
+		// optional, output image formats
+		// formats: ["webp", "jpeg"],
+		formats: ["auto"],
+    // urlPath: '/images/',
+    // outputDir: './images/',
+
+		// optional, output image widths
+		widths: ["auto"],
+
+		// optional, attributes assigned on <img> override these values.
+		// defaultAttributes: {
+		// 	loading: "lazy",
+		// 	decoding: "async",
+		// 	sizes: "100vw",
+		// },
+	});
   config.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'));
   config.addPlugin(require("@11ty/eleventy-plugin-rss"));
 
