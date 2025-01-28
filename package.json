@@ -10,7 +10,7 @@
     "build:rollup": "rollup -c",
     "copy-images": "rsync -av --include='*/' --include='*.png' --include='*.svg' --exclude='*' ./src/posts/ ./public/",
     "clean": "rimraf dist",
-    "dev": "npm-run-all clean nbconvert copy-images build:* -p dev:*",
+    "dev": "npm-run-all clean build:* -p dev:*",
     "dev:11ty": "eleventy --serve --pathprefix=/zachparent-site/ --quiet",
     "dev:rollup": "rollup -c -w",
     "build-ghpages": "npm run build"
