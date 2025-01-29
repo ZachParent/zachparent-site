@@ -16,8 +16,8 @@ importers:
   .:
     devDependencies:
       '@11ty/eleventy':
-        specifier: 3.0.0
-        version: 3.0.0
+        specifier: 3.0.1-alpha.3
+        version: 3.0.1-alpha.3
       '@11ty/eleventy-plugin-rss':
         specifier: ^1.1.2
         version: 1.2.0
@@ -121,8 +121,12 @@ packages:
     resolution: {integrity: sha512-nULO91om7vQw4Y/UBjM8i7nJ1xl+/nyK4rImZ41lFxiY2d+XUz7ChAj1CDYFjrLZeu0utAYJTZ45LlcHTkUG4g==}
     engines: {node: '>=12'}
 
-  '@11ty/eleventy@3.0.0':
-    resolution: {integrity: sha512-0P0ZsJXVW2QiNdhd7z+GYy6n+ivh0enx1DRdua5ta6NlzY2AhbkeWBY6U+FKA8lPS3H4+XsTpfLLfIScpPZLaQ==}
+  '@11ty/eleventy-utils@2.0.0':
+    resolution: {integrity: sha512-rKny6X7+ARuke0TaA6FwNv2PWJCNSdPQqbqDgaZgi+bPXwnPRTEi3CWzvr6vVgh/1XpO1G4FhRPreLhtcwHUyg==}
+    engines: {node: '>=18'}
+
+  '@11ty/eleventy@3.0.1-alpha.3':
+    resolution: {integrity: sha512-t416AuK1/Cwk8Vi5RmT6ovKLGcnWuw+LF7VW8arXkEGebjv/DXBvAvUwx4TSFBZVqxTKomW4KwwM5yuQjSJj0g==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -507,9 +511,6 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  chardet@2.0.0:
-    resolution: {integrity: sha512-xVgPpulCooDjY6zH4m9YW3jbkaBe3FKIAvF5sj5t7aBNsVl2ljIE+xwJ4iNgiDZHFQvNIpjdKdVOQvvk5ZfxbQ==}
-
   cheerio-select@2.1.0:
     resolution: {integrity: sha512-9v9kG0LvzrlcungtnJtpGNxY+fzECQKhK4EGJX2vByejiMX84MFNQw4UxPJl3bFbTMw+Dfs37XaIkCwTZfLh4g==}
 
@@ -757,8 +758,8 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
-  entities@5.0.0:
-    resolution: {integrity: sha512-BeJFvFRJddxobhvEdm5GqHzRV/X+ACeuw0/BuuxsCh1EUZcAIz8+kYmBp/LrQuloy6K1f3a0M7+IhmZ7QnkISA==}
+  entities@6.0.0:
+    resolution: {integrity: sha512-aKstq2TDOndCn4diEyp9Uq/Flu2i1GlLkc6XIDQSDMuaFE3OPW5OphLCyQ5SpSJZTb4reN+kTcYru5yIfXoRPw==}
     engines: {node: '>=0.12'}
 
   errno@0.1.8:
@@ -1415,6 +1416,10 @@ packages:
   p-finally@1.0.0:
     resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
     engines: {node: '>=4'}
+
+  p-map@7.0.3:
+    resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
+    engines: {node: '>=18'}
 
   p-queue@6.6.2:
     resolution: {integrity: sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==}
@@ -2273,24 +2278,25 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
 
-  '@11ty/eleventy@3.0.0':
+  '@11ty/eleventy-utils@2.0.0': {}
+
+  '@11ty/eleventy@3.0.1-alpha.3':
     dependencies:
       '@11ty/dependency-tree': 3.0.1
       '@11ty/dependency-tree-esm': 1.0.2
       '@11ty/eleventy-dev-server': 2.0.4
       '@11ty/eleventy-plugin-bundle': 3.0.0(posthtml@0.16.6)
-      '@11ty/eleventy-utils': 1.0.3
+      '@11ty/eleventy-utils': 2.0.0
       '@11ty/lodash-custom': 4.17.21
       '@11ty/posthtml-urls': 1.0.0
       '@11ty/recursive-copy': 3.0.1
       '@sindresorhus/slugify': 2.2.1
       bcp-47-normalize: 2.3.0
-      chardet: 2.0.0
       chokidar: 3.6.0
       cross-spawn: 7.0.6
       debug: 4.4.0
       dependency-graph: 1.0.0
-      entities: 5.0.0
+      entities: 6.0.0
       fast-glob: 3.3.3
       filesize: 10.1.6
       graceful-fs: 4.2.11
@@ -2306,8 +2312,8 @@ snapshots:
       minimist: 1.2.8
       moo: 0.5.2
       node-retrieve-globals: 6.0.0
-      normalize-path: 3.0.0
       nunjucks: 3.2.4(chokidar@3.6.0)
+      p-map: 7.0.3
       please-upgrade-node: 3.2.0
       posthtml: 0.16.6
       posthtml-match-helper: 2.0.3(posthtml@0.16.6)
@@ -2679,8 +2685,6 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chardet@2.0.0: {}
-
   cheerio-select@2.1.0:
     dependencies:
       boolbase: 1.0.0
@@ -2960,7 +2964,7 @@ snapshots:
 
   entities@4.5.0: {}
 
-  entities@5.0.0: {}
+  entities@6.0.0: {}
 
   errno@0.1.8:
     dependencies:
@@ -3646,6 +3650,8 @@ snapshots:
       ee-first: 1.1.1
 
   p-finally@1.0.0: {}
+
+  p-map@7.0.3: {}
 
   p-queue@6.6.2:
     dependencies:

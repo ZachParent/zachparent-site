@@ -16,7 +16,7 @@
     "build-ghpages": "npm run build"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0",
+    "@11ty/eleventy": "3.0.1-alpha.3",
     "@11ty/eleventy-plugin-rss": "^1.1.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
