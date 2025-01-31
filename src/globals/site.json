@@ -1,6 +1,6 @@
 {
   "name": "Zach Parent",
-  "description": "As I see it.",
+  "description": "",
   "url": "https://zachparent.com",
   "baseUrl": "/zachparent-site/",
   "author": {
@@ -8,8 +8,8 @@
     "name": "Zach Parent"
   },
   "images": {
-    "twitter": "twitter.jpg",
-    "og": "og.jpg"
+    "twitter": "twitter.png",
+    "og": "og.png"
   },
   "feed": {
     "filename": "feed.xml",
