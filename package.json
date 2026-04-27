@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "astro": "^6.1.9"
   },
   "overrides": {

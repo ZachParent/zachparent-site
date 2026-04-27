@@ -1,12 +1,39 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Zach Parent | Software Developer',
+	description = 'Zach Parent builds reliable, scalable software that solves real problems and empowers people.',
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<script is:inline>
+			(() => {
+				const storedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = storedTheme === 'light' || storedTheme === 'dark'
+					? storedTheme
+					: prefersDark
+						? 'dark'
+						: 'light';
+
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.style.colorScheme = theme;
+			})();
+		</script>
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
@@ -18,6 +45,10 @@
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
+	}
+
+	:global(*) {
+		box-sizing: border-box;
 	}
 </style>
