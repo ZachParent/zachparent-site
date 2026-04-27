@@ -1,9 +1,0 @@
-.copy {
-    @apply font-jetbrains flex justify-center text-xs w-24 p-1 cursor-pointer absolute top-0 right-0 opacity-25 bg-orange_(pantone) text-white transition-all duration-200;
-    @apply hover:p-4 hover:opacity-100 hover:w-24 hover:text-base;
-    content: "copy";
-}
-
-pre {
-    @apply relative;
-}
