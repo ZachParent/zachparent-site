@@ -21,6 +21,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<script is:inline>
 			(() => {
+				document.documentElement.classList.add('js');
 				const storedTheme = localStorage.getItem('theme');
 				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 				const theme = storedTheme === 'light' || storedTheme === 'dark'
