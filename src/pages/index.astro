@@ -254,6 +254,7 @@ const sunIcon = icon(faSun).html.join('');
 		--soft-line: rgba(52, 88, 118, 0.18);
 		--grid: rgba(60, 89, 119, 0.22);
 		--grid-dot: rgba(42, 79, 113, 0.34);
+		--edge-fade: rgba(var(--bg-rgb), 0.24);
 		--accent: #0a63e7;
 		--accent-soft: #7ba8f2;
 		--surface: rgba(255, 253, 247, 0.5);
@@ -292,6 +293,7 @@ const sunIcon = icon(faSun).html.join('');
 			--soft-line: rgba(216, 228, 237, 0.15);
 			--grid: rgba(119, 151, 187, 0.26);
 			--grid-dot: rgba(139, 170, 210, 0.42);
+			--edge-fade: rgba(var(--bg-rgb), 0.18);
 			--accent: #80aaff;
 			--accent-soft: #7fa8ff;
 			--surface: rgba(7, 18, 28, 0.48);
@@ -326,6 +328,7 @@ const sunIcon = icon(faSun).html.join('');
 		--soft-line: rgba(216, 228, 237, 0.15);
 		--grid: rgba(119, 151, 187, 0.26);
 		--grid-dot: rgba(139, 170, 210, 0.42);
+		--edge-fade: rgba(var(--bg-rgb), 0.18);
 		--accent: #80aaff;
 		--accent-soft: #7fa8ff;
 		--surface: rgba(7, 18, 28, 0.48);
@@ -382,34 +385,13 @@ const sunIcon = icon(faSun).html.join('');
 		font-size: 16px;
 	}
 
-	:global(body::before) {
-		position: fixed;
-		inset: 0;
-		z-index: -2;
-		content: '';
-		background-image:
-			radial-gradient(circle at 1px 1px, var(--grid-dot) 1px, transparent 1.4px),
-			repeating-linear-gradient(0deg, transparent 0 61px, var(--grid) 62px 63px),
-			repeating-linear-gradient(90deg, transparent 0 61px, var(--grid) 62px 63px);
-		background-position:
-			31px 31px,
-			0 0,
-			0 0;
-		background-size:
-			62px 62px,
-			62px 62px,
-			62px 62px;
-		mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 95%, transparent 100%);
-		pointer-events: none;
-	}
-
 	:global(body::after) {
 		position: fixed;
 		inset: 0;
-		z-index: -1;
+		z-index: 0;
 		content: '';
 		background:
-			linear-gradient(90deg, rgba(var(--bg-rgb), 0.42), rgba(var(--bg-rgb), 0.02) 35%, rgba(var(--bg-rgb), 0.18)),
+			linear-gradient(90deg, var(--edge-fade), transparent 30%, transparent 72%, var(--edge-fade)),
 			radial-gradient(circle at 50% 8%, transparent 0 34rem, rgba(var(--bg-rgb), 0.02) 64rem);
 		pointer-events: none;
 	}
@@ -420,6 +402,8 @@ const sunIcon = icon(faSun).html.join('');
 	}
 
 	.site-shell {
+		position: relative;
+		z-index: 1;
 		min-height: 100vh;
 	}
 
@@ -1373,10 +1357,6 @@ const sunIcon = icon(faSun).html.join('');
 	}
 
 	@media (min-width: 1100px) {
-		:global(body::before) {
-			mask-image: linear-gradient(90deg, transparent 0, #000 19%, #000 98%);
-		}
-
 		.site-shell {
 			display: grid;
 			grid-template-columns: 304px minmax(0, 1fr);
