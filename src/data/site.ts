@@ -14,44 +14,34 @@ export type IconName =
 
 export const navItems = [
 	{
-		label: 'Resume',
-		href: '#resume',
-		icon: 'file',
-		external: false,
-	},
-	{
-		label: 'About',
-		href: '#about',
-		icon: 'user',
-		external: false,
-	},
-	{
 		label: 'LinkedIn',
 		href: 'https://www.linkedin.com/in/zachparent/',
 		icon: 'linkedin',
-		external: true,
 	},
 ] as const;
 
 export const homeContent = {
 	logo: 'ZP',
-	role: 'Software Developer',
+	role: 'Forward Deployed Engineer',
 	name: 'Zach Parent',
-	intro: 'I build reliable, scalable software that solves real problems and empowers people.',
+	intro: 'I build software systems that matter to people.',
 	resumeLabel: 'View Resume',
-	codeLabel: '// SYSTEMS. CODE. IMPACT.',
+	codeLabel: '// NOT YOUR TYPICAL ENGINEER.',
 	measurements: {
 		vertical: '720',
 		horizontal: '1280',
 	},
-	signoff: ['Built with intention', 'Shipped with care'],
+	signoff: ['AGI is coming.', 'Let\'s ensure it benefits everyone'],
 	code: {
 		name: 'Zach Parent',
-		role: 'Software Developer',
-		focus: ['systems design', 'developer experience', 'reliable software'],
+		current_role: 'Forward Deployed Engineer',
+		focus: [
+			'systems design',
+			'artificial intelligence',
+			'customer success',
+		],
 		principles: {
-			clarity: true,
-			simplicity: true,
+			open_source: true,
 			impact: true,
 		},
 	},
@@ -62,7 +52,7 @@ export const workItems = [
 		number: '01',
 		title: 'OpenAI',
 		primary: {
-			label: 'Forward Deploy Engineer',
+			label: 'Forward Deployed Engineer',
 			icon: 'code',
 			accent: 'blue',
 		},
@@ -74,15 +64,15 @@ export const workItems = [
 	},
 	{
 		number: '02',
-		title: "Master's Degree",
+		title: "Master's Degree in AI",
 		primary: {
-			label: 'Barcelona / AI',
+			label: 'UPC (BarcelonaTech)',
 			icon: 'cap',
 			accent: 'amber',
 		},
 		secondary: {
-			label: 'AI',
-			icon: 'tag',
+			label: '2024-2025',
+			icon: 'calendar',
 			accent: 'neutral',
 		},
 	},
@@ -90,13 +80,41 @@ export const workItems = [
 		number: '03',
 		title: 'Skatefolio',
 		primary: {
-			label: 'Project for skaters',
+			label: 'Video platform made just for skaters',
 			icon: 'cube',
 			accent: 'green',
 		},
 		secondary: {
-			label: 'Product',
-			icon: 'tag',
+			label: '2022-2024',
+			icon: 'calendar',
+			accent: 'neutral',
+		},
+	},
+	{
+		number: '04',
+		title: 'Google',
+		primary: {
+			label: 'Software Engineer',
+			icon: 'cube',
+			accent: 'blue',
+		},
+		secondary: {
+			label: '2019-2022',
+			icon: 'calendar',
+			accent: 'neutral',
+		},
+	},
+	{
+		number: '05',
+		title: 'University of Michigan',
+		primary: {
+			label: 'Aerospace Engineering and Computer Science',
+			icon: 'cap',
+			accent: 'amber',
+		},
+		secondary: {
+			label: '2015-2019',
+			icon: 'calendar',
 			accent: 'neutral',
 		},
 	},
@@ -104,11 +122,11 @@ export const workItems = [
 
 export const contactItems = [
 	{
-		label: 'Boston, MA',
+		label: 'San Francisco, CA',
 		icon: 'map',
 	},
 	{
-		label: 'ET (UTC-4)',
+		label: 'PST (UTC-8)',
 		icon: 'clock',
 	},
 	{
@@ -116,7 +134,7 @@ export const contactItems = [
 		icon: 'opportunity',
 	},
 	{
-		label: 'zach.parent.dev@gmail.com',
+		label: 'zachparent at duck dot com',
 		icon: 'mail',
 	},
 ] as const;
