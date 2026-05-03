@@ -33,23 +33,29 @@ export const navItems = [
 	},
 ] as const;
 
-export const codeLines = [
-	'<span class="token keyword">const</span> developer = {',
-	'  name: <span class="token string">"Zach Parent"</span>,',
-	'  role: <span class="token string">"Software Developer"</span>,',
-	'  focus: [',
-	'    <span class="token string">"systems design"</span>,',
-	'    <span class="token string">"developer experience"</span>,',
-	'    <span class="token string">"reliable software"</span>,',
-	'  ],',
-	'  principles: {',
-	'    clarity: <span class="token boolean">true</span>,',
-	'    simplicity: <span class="token boolean">true</span>,',
-	'    impact: <span class="token boolean">true</span>,',
-	'  }',
-	'};',
-	'<span class="token keyword">export default</span> developer;',
-] as const;
+export const homeContent = {
+	logo: 'ZP',
+	role: 'Software Developer',
+	name: 'Zach Parent',
+	intro: 'I build reliable, scalable software that solves real problems and empowers people.',
+	resumeLabel: 'View Resume',
+	codeLabel: '// SYSTEMS. CODE. IMPACT.',
+	measurements: {
+		vertical: '720',
+		horizontal: '1280',
+	},
+	signoff: ['Built with intention', 'Shipped with care'],
+	code: {
+		name: 'Zach Parent',
+		role: 'Software Developer',
+		focus: ['systems design', 'developer experience', 'reliable software'],
+		principles: {
+			clarity: true,
+			simplicity: true,
+			impact: true,
+		},
+	},
+} as const;
 
 export const workItems = [
 	{

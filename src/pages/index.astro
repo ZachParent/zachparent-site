@@ -2,18 +2,47 @@
 import { icon } from '@fortawesome/fontawesome-svg-core';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import Icon from '../components/Icon.astro';
-import { codeLines, contactItems, navItems, sidebarGroups, workItems } from '../data/site';
+import { contactItems, homeContent, navItems, sidebarGroups, workItems } from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
 const moonIcon = icon(faMoon).html.join('');
 const sunIcon = icon(faSun).html.join('');
+const jsonLines = JSON.stringify(homeContent.code, null, 2).split('\n');
+const escapeHtml = (value: string) =>
+	value.replace(/[&<>"']/g, (character) => {
+		const entities: Record<string, string> = {
+			'&': '&amp;',
+			'<': '&lt;',
+			'>': '&gt;',
+			'"': '&quot;',
+			"'": '&#39;',
+		};
+		return entities[character] ?? character;
+	});
+const highlightJsonValue = (value: string) =>
+	value
+		.replace(/(&quot;.*?&quot;)/g, '<span class="token string">$1</span>')
+		.replace(/\b(true|false|null)\b/g, '<span class="token boolean">$1</span>')
+		.replace(/\b(-?\d+(?:\.\d+)?)\b/g, '<span class="token number">$1</span>')
+		.replace(/([{}[\],])/g, '<span class="token punctuation">$1</span>');
+const highlightJsonLine = (line: string) => {
+	const escapedLine = escapeHtml(line);
+	const propertyMatch = escapedLine.match(/^(\s*)(&quot;.*?&quot;)(:\s?)(.*)$/);
+
+	if (!propertyMatch) {
+		return highlightJsonValue(escapedLine);
+	}
+
+	const [, indent, key, separator, rest] = propertyMatch;
+	return `${indent}<span class="token property">${key}</span><span class="token punctuation">:</span>${separator.endsWith(' ') ? ' ' : ''}${highlightJsonValue(rest)}`;
+};
 ---
 
 <Layout>
 	<a class="skip-link" href="#about">Skip to main content</a>
 	<div class="site-shell">
 		<header class="mobile-header" aria-label="Primary" data-reveal>
-			<a class="logo" href="/" aria-label="Zach Parent home">ZP</a>
+			<a class="logo" href="/" aria-label={`${homeContent.name} home`}>{homeContent.logo}</a>
 			<nav class="mobile-nav" aria-label="Primary navigation">
 				{
 					navItems.map((item) => (
@@ -37,7 +66,7 @@ const sunIcon = icon(faSun).html.join('');
 		</header>
 
 		<aside class="sidebar" aria-label="Profile sidebar" data-reveal>
-			<a class="logo sidebar-logo" href="/" aria-label="Zach Parent home">ZP</a>
+			<a class="logo sidebar-logo" href="/" aria-label={`${homeContent.name} home`}>{homeContent.logo}</a>
 			<nav class="sidebar-nav" aria-label="Primary navigation">
 				{
 					navItems.map((item) => (
@@ -61,12 +90,12 @@ const sunIcon = icon(faSun).html.join('');
 			</nav>
 			<div class="sidebar-code">
 				<div class="code-card compact">
-					<p class="code-kicker">// SYSTEMS. CODE. IMPACT.</p>
+					<p class="code-kicker">{homeContent.codeLabel}</p>
 					<pre aria-label="Developer profile code sample">{
-							codeLines.map((line, index) => (
+							jsonLines.map((line, index) => (
 								<span class="code-row">
 									<span class="code-number">{String(index + 1).padStart(2, '0')}</span>
-									<code set:html={line} />
+									<code set:html={highlightJsonLine(line)} />
 								</span>
 							))
 						}</pre>
@@ -84,9 +113,8 @@ const sunIcon = icon(faSun).html.join('');
 			</div>
 			<div class="sidebar-signoff">
 				<Icon name="crosshair" size={54} strokeWidth={1.25} />
-				<p>
-					Built with intention<br />
-					Shipped with care
+				<p aria-label={homeContent.signoff.join(' ')}>
+					{homeContent.signoff.map((line) => <span class="signoff-line">{line}</span>)}
 				</p>
 			</div>
 		</aside>
@@ -96,18 +124,18 @@ const sunIcon = icon(faSun).html.join('');
 				<div class="hero-heading" data-reveal style="--reveal-delay: 80ms">
 					<div class="eyebrow">
 						<span></span>
-						<p>Software Developer</p>
+						<p>{homeContent.role}</p>
 						<span></span>
 					</div>
-					<h1 id="hero-title">Zach Parent</h1>
+					<h1 id="hero-title">{homeContent.name}</h1>
 				</div>
 
 				<div class="portrait-stage" aria-hidden="true" data-polaroid-stage data-reveal style="--reveal-delay: 160ms">
 					<div class="measure measure-y">
-						<span>720</span>
+						<span>{homeContent.measurements.vertical}</span>
 					</div>
 					<div class="measure measure-x">
-						<span>1280</span>
+						<span>{homeContent.measurements.horizontal}</span>
 					</div>
 					<div class="blueprint-arc"></div>
 					<div class="blueprint-corner corner-one"></div>
@@ -122,10 +150,10 @@ const sunIcon = icon(faSun).html.join('');
 
 				<div class="hero-actions" data-reveal style="--reveal-delay: 240ms">
 					<p class="intro">
-						I build reliable, scalable software that solves real problems and empowers people.
+						{homeContent.intro}
 					</p>
 					<a class="resume-link" href="#resume">
-						View Resume
+						{homeContent.resumeLabel}
 						<Icon name="arrow" size={27} strokeWidth={1.55} />
 					</a>
 				</div>
@@ -145,12 +173,12 @@ const sunIcon = icon(faSun).html.join('');
 
 			<section class="main-code" aria-label="Developer profile code" data-reveal>
 				<div class="code-card">
-					<p class="code-kicker">// SYSTEMS. CODE. IMPACT.</p>
+					<p class="code-kicker">{homeContent.codeLabel}</p>
 					<pre>{
-							codeLines.map((line, index) => (
+							jsonLines.map((line, index) => (
 								<span class="code-row">
 									<span class="code-number">{String(index + 1).padStart(2, '0')}</span>
-									<code set:html={line} />
+									<code set:html={highlightJsonLine(line)} />
 								</span>
 							))
 						}</pre>
@@ -203,9 +231,8 @@ const sunIcon = icon(faSun).html.join('');
 				</div>
 				<div class="footer-signoff">
 					<Icon name="crosshair" size={58} strokeWidth={1.1} />
-					<p>
-						Built with intention<br class="desktop-break" />
-						Shipped with care
+					<p aria-label={homeContent.signoff.join(' ')}>
+						{homeContent.signoff.map((line) => <span class="signoff-line">{line}</span>)}
 					</p>
 				</div>
 			</footer>
@@ -414,13 +441,6 @@ const sunIcon = icon(faSun).html.join('');
 	}
 
 	:global(html) {
-		background: var(--bg);
-		scroll-behavior: smooth;
-	}
-
-	:global(body) {
-		position: relative;
-		overflow-x: hidden;
 		background-color: var(--bg);
 		background-image:
 			var(--body-glow-one),
@@ -441,6 +461,13 @@ const sunIcon = icon(faSun).html.join('');
 			62px 62px,
 			62px 62px;
 		background-attachment: fixed, fixed, fixed, fixed, fixed;
+		scroll-behavior: smooth;
+	}
+
+	:global(body) {
+		position: relative;
+		overflow-x: hidden;
+		background: transparent;
 		color: var(--text);
 		font-family: var(--sans);
 		font-size: 16px;
@@ -1039,13 +1066,24 @@ const sunIcon = icon(faSun).html.join('');
 		white-space: pre-wrap;
 	}
 
-	.token.keyword,
 	.token.boolean {
+		color: var(--code-keyword);
+	}
+
+	.token.property {
 		color: var(--code-keyword);
 	}
 
 	.token.string {
 		color: var(--code-string);
+	}
+
+	.token.number {
+		color: var(--accent-soft);
+	}
+
+	.token.punctuation {
+		color: var(--muted);
 	}
 
 	.work-section {
@@ -1272,6 +1310,10 @@ const sunIcon = icon(faSun).html.join('');
 		letter-spacing: 0.22em;
 		line-height: 1.7;
 		text-transform: uppercase;
+	}
+
+	.signoff-line {
+		display: block;
 	}
 
 	@media (prefers-color-scheme: dark) {
