@@ -69,18 +69,18 @@ import { homeContent } from '../data/site';
 
 	.bg-grid {
 		background-image:
-			linear-gradient(rgba(60, 89, 119, 0.14) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(60, 89, 119, 0.14) 1px, transparent 1px);
+			linear-gradient(rgba(60, 89, 119, 0.22) 1.6px, transparent 1.6px),
+			linear-gradient(90deg, rgba(60, 89, 119, 0.22) 1.6px, transparent 1.6px);
 		background-size: 28px 28px, 28px 28px;
 		mix-blend-mode: multiply;
-		opacity: 0.24;
+		opacity: 0.32;
 	}
 
 	.overlay {
 		background:
-			repeating-linear-gradient(90deg, transparent 0, transparent 90px, rgba(255, 255, 255, 0.06) 90px, rgba(255, 255, 255, 0.06) 91px),
+			repeating-linear-gradient(90deg, transparent 0, transparent 88px, rgba(255, 255, 255, 0.12) 88px, rgba(255, 255, 255, 0.12) 90px),
 			radial-gradient(circle at 84% 20%, rgba(10, 99, 231, 0.24), transparent 26rem);
-		opacity: 0.38;
+		opacity: 0.5;
 	}
 
 	.hero-shell {
@@ -112,7 +112,7 @@ import { homeContent } from '../data/site';
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 16px;
 		color: #0d2f55;
 	}
 
@@ -137,7 +137,7 @@ import { homeContent } from '../data/site';
 		right: clamp(28px, 5vw, 48px);
 		top: 50%;
 		transform: translateY(-50%) rotate(-3deg);
-		width: clamp(180px, 22vw, 265px);
+		width: clamp(220px, 28vw, 320px);
 	}
 
 	.polaroid img {
@@ -160,7 +160,7 @@ import { homeContent } from '../data/site';
 
 		.polaroid {
 			right: 24px;
-			width: 220px;
+			width: 250px;
 		}
 	}
 </style>

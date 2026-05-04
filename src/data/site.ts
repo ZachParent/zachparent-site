@@ -77,7 +77,7 @@ export const workItems: WorkItem[] = [
 	},
 	{
 		number: '02',
-		title: "UPC (BarcelonaTech)",
+		title: "UPC (Barcelona Tech)",
 		primary: {
 			label: 'Master\'s Degree in AI',
 			icon: 'cap',
@@ -110,7 +110,7 @@ export const workItems: WorkItem[] = [
 		title: 'Google',
 		primary: {
 			label: 'Software Engineer',
-			icon: 'cube',
+			icon: 'code',
 			accent: 'blue',
 		},
 		secondary: {
