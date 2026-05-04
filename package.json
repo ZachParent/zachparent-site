@@ -8,10 +8,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:render-og": "astro build && node ./scripts/generate-og-image.mjs --no-build",
+    "build:no-og": "astro build",
     "preview": "astro preview",
+    "generate:og-image": "node ./scripts/generate-og-image.mjs",
+    "generate:og-image:open": "node ./scripts/generate-og-image.mjs --open",
     "astro": "astro"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "astro": "^6.1.9"
   },
   "overrides": {

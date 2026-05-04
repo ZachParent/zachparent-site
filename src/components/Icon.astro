@@ -1,0 +1,44 @@
+---
+interface Props {
+	name: string;
+	size?: number;
+	strokeWidth?: number;
+	class?: string;
+}
+
+const { name, size = 24, strokeWidth = 1.8 } = Astro.props;
+const className = Astro.props.class;
+
+const icons: Record<string, string> = {
+	file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h2"/>',
+	user: '<path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>',
+	arrow: '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
+	external: '<path d="M7 17 17 7"/><path d="M9 7h8v8"/>',
+	map: '<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+	clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',
+	mail: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3 7 9 6 9-6"/>',
+	calendar: '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/>',
+	code: '<path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/><path d="m14 4-4 16"/>',
+	cap: '<path d="m22 9-10-5L2 9l10 5 10-5Z"/><path d="M6 11.5V16c3.4 2 8.6 2 12 0v-4.5"/><path d="M22 9v6"/>',
+	cube: '<path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
+	tag: '<path d="M20.6 13.1 13.1 20.6a2 2 0 0 1-2.8 0L3 13.3V3h10.3l7.3 7.3a2 2 0 0 1 0 2.8Z"/><circle cx="8" cy="8" r="1.4"/>',
+	crosshair: '<circle cx="12" cy="12" r="6"/><path d="M12 2v5"/><path d="M12 17v5"/><path d="M2 12h5"/><path d="M17 12h5"/>',
+	opportunity: '<path d="M4 5h16v14H4Z"/><path d="m8 9 3 3-3 3"/><path d="M13 15h3"/>',
+	linkedin: '<path fill="currentColor" stroke="none" d="M19.8 3H4.2C3.54 3 3 3.52 3 4.17v15.66c0 .65.54 1.17 1.2 1.17h15.6c.66 0 1.2-.52 1.2-1.17V4.17C21 3.52 20.46 3 19.8 3ZM8.34 18.34H5.67V9.72h2.67v8.62ZM7 8.53a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1Zm11.34 9.81h-2.66v-4.2c0-1-.02-2.3-1.4-2.3-1.4 0-1.62 1.1-1.62 2.23v4.27H10V9.72h2.55v1.18h.04a2.8 2.8 0 0 1 2.52-1.38c2.7 0 3.2 1.78 3.2 4.09v4.73h.03Z"/>',
+};
+---
+
+<svg
+	class={className}
+	width={size}
+	height={size}
+	viewBox="0 0 24 24"
+	fill="none"
+	stroke="currentColor"
+	stroke-width={strokeWidth}
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	aria-hidden="true"
+	focusable="false"
+	set:html={icons[name] ?? icons.crosshair}
+/>
