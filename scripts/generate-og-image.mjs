@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import process from 'node:process';
@@ -9,11 +9,18 @@ const shouldBuild = !args.has('--no-build');
 const allowExistingPreview = args.has('--use-existing-preview') || process.env.OG_IMAGE_USE_EXISTING_PREVIEW === '1';
 const width = Number(process.env.OG_IMAGE_WIDTH || '1200');
 const height = Number(process.env.OG_IMAGE_HEIGHT || '630');
+const chromeHeightOffset = Number(process.env.OG_IMAGE_CHROME_HEIGHT_OFFSET || '87');
+const chromeWindowHeight = Number(process.env.OG_IMAGE_CHROME_WINDOW_HEIGHT || String(height + chromeHeightOffset));
 const port = Number(process.env.OG_IMAGE_PORT || '4321');
 const host = process.env.OG_IMAGE_HOST || '127.0.0.1';
 const imagePath = path.resolve(process.cwd(), process.env.OG_IMAGE_OUTPUT || 'public/og-image.png');
+const screenshotPath = chromeWindowHeight > height ? `${imagePath}.tmp.png` : imagePath;
 const pagePath = process.env.OG_IMAGE_PATH || '/og-image';
-const previewUrl = `http://${host}:${port}${pagePath}`;
+const queryParams = new URLSearchParams({
+	width: String(width),
+	height: String(height),
+});
+const previewUrl = `http://${host}:${port}${pagePath}?${queryParams.toString()}`;
 const openImage = process.env.OG_IMAGE_OPEN === '1' || shouldOpen;
 
 const chromeCandidates = [
@@ -26,9 +33,16 @@ const chromeCandidates = [
 	'/usr/bin/chromium-browser',
 	'/usr/bin/chromium',
 ];
+const magickCandidates = [
+	process.env.MAGICK_PATH,
+	'/opt/homebrew/bin/magick',
+	'/usr/local/bin/magick',
+	'/usr/bin/magick',
+];
 
 const resolveChrome = () => chromeCandidates.find((candidate) => candidate && existsSync(candidate));
 const chromePath = resolveChrome();
+const resolveMagick = () => magickCandidates.find((candidate) => candidate && existsSync(candidate));
 
 if (!chromePath) {
 	console.error('[og-image] Chrome executable not found. Set CHROME_PATH to a valid browser binary.');
@@ -118,8 +132,8 @@ const runChromeScreenshot = () => new Promise((resolve, reject) => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--hide-scrollbars',
-			`--window-size=${width},${height}`,
-			`--screenshot=${imagePath}`,
+			`--window-size=${width},${chromeWindowHeight}`,
+			`--screenshot=${screenshotPath}`,
 			previewUrl,
 		],
 		{ stdio: 'inherit' },
@@ -134,6 +148,48 @@ const runChromeScreenshot = () => new Promise((resolve, reject) => {
 		reject(new Error(`Chrome exited with code ${code}`));
 	});
 });
+
+const cropScreenshot = () => {
+	if (screenshotPath === imagePath) {
+		return Promise.resolve();
+	}
+
+	const magickPath = resolveMagick();
+
+	if (!magickPath) {
+		throw new Error('ImageMagick not found. Install ImageMagick or set MAGICK_PATH so the oversized Chrome screenshot can be cropped.');
+	}
+
+	return new Promise((resolve, reject) => {
+		const crop = spawn(
+			magickPath,
+			[
+				screenshotPath,
+				'-crop',
+				`${width}x${height}+0+0`,
+				'+repage',
+				imagePath,
+			],
+			{ stdio: 'inherit' },
+		);
+
+		crop.on('error', reject);
+		crop.on('close', (code) => {
+			try {
+				unlinkSync(screenshotPath);
+			} catch {
+				// Best-effort cleanup only.
+			}
+
+			if (code === 0) {
+				resolve();
+				return;
+			}
+
+			reject(new Error(`ImageMagick exited with code ${code}`));
+		});
+	});
+};
 
 const openImageFile = () => {
 	if (!openImage) {
@@ -157,6 +213,7 @@ try {
 
 	previewProcess = await startPreview();
 	await runChromeScreenshot();
+	await cropScreenshot();
 	openImageFile();
 	console.log(`[og-image] Generated ${imagePath}`);
 	console.log(`[og-image] OG render source: ${previewUrl}`);

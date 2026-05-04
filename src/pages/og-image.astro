@@ -4,7 +4,7 @@ import { homeContent } from '../data/site';
 ---
 
 <Layout
-	title="Zach Parent | Forward Deployed Engineer"
+	title="Zach Parent"
 	description="Zach Parent builds reliable, scalable software systems with measurable real-world impact."
 	canonicalUrl="https://zachparent.com/og-image"
 	ogImage="/og-image.png"
@@ -28,29 +28,51 @@ import { homeContent } from '../data/site';
 	</main>
 </Layout>
 
+<script is:inline>
+	const params = new URLSearchParams(window.location.search);
+	const width = Number(params.get('w') || params.get('width') || params.get('ogw'));
+	const height = Number(params.get('h') || params.get('height') || params.get('ogh'));
+	const fallbackWidth = 1200;
+	const fallbackHeight = 630;
+	const clamp = (value, fallback) => Number.isFinite(value) && value > 0 ? `${Math.round(value)}px` : `${fallback}px`;
+	const root = document.documentElement;
+	root.style.setProperty('--og-width', clamp(width, fallbackWidth));
+	root.style.setProperty('--og-height', clamp(height, fallbackHeight));
+</script>
+
 <style>
+	:global(:root) {
+		--og-width: 1200px;
+		--og-height: 630px;
+	}
+
 	html,
 	body,
 	:global(html),
 	:global(body) {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		width: var(--og-width);
+		height: var(--og-height);
+		min-height: var(--og-height);
+		max-height: var(--og-height);
+		overflow: hidden;
 		background:
 			radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.55), transparent 24rem),
 			radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.25), transparent 20rem),
 			linear-gradient(140deg, #f8f3ea, #fff6e9 52%, #ebe7df);
+		aspect-ratio: calc(var(--og-width) / var(--og-height));
 	}
 
 	.og-page {
-		width: 100vw;
-		min-height: 100vh;
-		height: 100vh;
+		width: var(--og-width);
+		height: var(--og-height);
+		min-height: var(--og-height);
+		max-height: var(--og-height);
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
 		position: relative;
-		padding: clamp(22px, 3.2vw, 42px) clamp(30px, 4vw, 52px);
+		padding: clamp(30px, 4vw, 48px) clamp(30px, 4vw, 52px);
 		overflow: hidden;
 		color: var(--text);
 		box-sizing: border-box;
@@ -88,8 +110,10 @@ import { homeContent } from '../data/site';
 		z-index: 1;
 		display: flex;
 		align-items: center;
+		box-sizing: border-box;
 		width: min(1060px, 100%);
 		height: 100%;
+		max-height: 100%;
 		border: 1px solid rgba(48, 77, 105, 0.42);
 		border-radius: 24px;
 		padding: clamp(28px, 4vw, 44px);
