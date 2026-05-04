@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run build:render-og",
+    "build": "astro build",
     "build:render-og": "astro build && node ./scripts/generate-og-image.mjs --no-build",
     "build:no-og": "astro build",
     "preview": "astro preview",
