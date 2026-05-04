@@ -138,8 +138,6 @@ const highlightJsonLine = (line: string) => {
 						<span>{homeContent.measurements.horizontal}</span>
 					</div>
 					<div class="blueprint-arc"></div>
-					<div class="blueprint-corner corner-one"></div>
-					<div class="blueprint-corner corner-two"></div>
 					<figure class="polaroid">
 						<div class="photo-frame">
 							<img class="theme-photo theme-photo-light" src="/images/zach-parent-portrait-light.png" alt="" />
@@ -152,10 +150,6 @@ const highlightJsonLine = (line: string) => {
 					<p class="intro">
 						{homeContent.intro}
 					</p>
-					<a class="resume-link" href="#resume">
-						{homeContent.resumeLabel}
-						<Icon name="arrow" size={27} strokeWidth={1.55} />
-					</a>
 				</div>
 
 				<div class="status-rail" aria-hidden="true" data-reveal style="--reveal-delay: 320ms">
@@ -194,13 +188,23 @@ const highlightJsonLine = (line: string) => {
 
 				<div class="work-list">
 					{
-						workItems.map((item) => (
-							<article class="work-row" data-reveal>
-								<div class="work-number">
-									<span>{item.number}</span>
-									<i></i>
-								</div>
-								<h3>{item.title}</h3>
+						workItems.map((item) => {
+							const RowTag = item.href ? 'a' : 'article';
+
+							return (
+								<RowTag
+									class="work-row"
+									href={item.href}
+									target={item.external ? '_blank' : undefined}
+									rel={item.external ? 'noreferrer' : undefined}
+									aria-label={item.href ? `${item.title}: ${item.primary.label}, ${item.secondary.label}` : undefined}
+									data-reveal
+								>
+									<div class="work-number">
+										<span>{item.number}</span>
+										<i></i>
+									</div>
+									<h3>{item.title}</h3>
 									<div class={`work-pill work-pill-primary accent-${item.primary.accent}`}>
 										<Icon name={item.primary.icon} size={22} strokeWidth={1.55} />
 										<span>{item.primary.label}</span>
@@ -208,9 +212,10 @@ const highlightJsonLine = (line: string) => {
 									<div class={`work-pill work-pill-secondary accent-${item.secondary.accent}`}>
 										<Icon name={item.secondary.icon} size={22} strokeWidth={1.55} />
 										<span>{item.secondary.label}</span>
-								</div>
-							</article>
-						))
+									</div>
+								</RowTag>
+							);
+						})
 					}
 				</div>
 			</section>
@@ -338,9 +343,12 @@ const highlightJsonLine = (line: string) => {
 		--edge-fade: rgba(var(--bg-rgb), 0.24);
 		--accent: #0a63e7;
 		--accent-soft: #7ba8f2;
+		--work-pill-gap: 26px;
 		--surface: rgba(255, 253, 247, 0.5);
 		--surface-strong: rgba(255, 253, 247, 0.72);
+		--row-base: rgba(255, 255, 255, 0.32);
 		--row-alt: rgba(77, 108, 140, 0.055);
+		--row-hover: rgba(255, 255, 255, 0.76);
 		--body-glow-one: radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.68), transparent 24rem);
 		--body-glow-two: radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.38), transparent 20rem);
 		--polaroid-bg: #f5f2ed;
@@ -354,8 +362,11 @@ const highlightJsonLine = (line: string) => {
 		--code-card-padding: 24px 28px 20px;
 		--code-card-border: 1px solid var(--line);
 		--code-card-radius: 16px;
-		--code-card-bg: rgba(255, 253, 247, 0.34);
-		--code-card-shadow: inset 0 0 24px rgba(10, 99, 231, 0.025);
+		--code-card-bg: rgba(255, 255, 255, 0.46);
+		--code-card-glaze: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.08) 42%, transparent 76%);
+		--code-card-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.64),
+			0 18px 44px rgba(36, 30, 22, 0.08);
 		--shadow: rgba(36, 30, 22, 0.26);
 		--shadow-interactive: 0 10px 24px rgba(13, 45, 77, 0.16);
 		--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -384,7 +395,9 @@ const highlightJsonLine = (line: string) => {
 			--accent-soft: #7fa8ff;
 			--surface: rgba(7, 18, 28, 0.48);
 			--surface-strong: rgba(8, 20, 31, 0.72);
+			--row-base: rgba(255, 255, 255, 0.032);
 			--row-alt: rgba(60, 112, 160, 0.12);
+			--row-hover: rgba(255, 255, 255, 0.076);
 			--body-glow-one: radial-gradient(circle at 82% 18%, rgba(23, 42, 58, 0.55), transparent 26rem);
 			--body-glow-two: radial-gradient(circle at 0% 0%, rgba(9, 30, 48, 0.42), transparent 22rem);
 			--polaroid-bg: #ebe9e5;
@@ -398,8 +411,11 @@ const highlightJsonLine = (line: string) => {
 			--code-card-padding: 24px 28px 20px;
 			--code-card-border: 1px solid var(--line);
 			--code-card-radius: 16px;
-			--code-card-bg: rgba(4, 14, 23, 0.32);
-			--code-card-shadow: inset 0 0 24px rgba(122, 162, 255, 0.03);
+			--code-card-bg: rgba(3, 11, 19, 0.5);
+			--code-card-glaze: linear-gradient(135deg, rgba(120, 158, 204, 0.045), rgba(255, 255, 255, 0.015) 38%, transparent 78%);
+			--code-card-shadow:
+				inset 0 1px 0 rgba(255, 255, 255, 0.08),
+				0 18px 46px rgba(0, 0, 0, 0.18);
 			--shadow: rgba(0, 0, 0, 0.48);
 			--shadow-interactive: 0 12px 26px rgba(0, 0, 0, 0.26);
 		}
@@ -420,7 +436,9 @@ const highlightJsonLine = (line: string) => {
 		--accent-soft: #7fa8ff;
 		--surface: rgba(7, 18, 28, 0.48);
 		--surface-strong: rgba(8, 20, 31, 0.72);
+		--row-base: rgba(255, 255, 255, 0.032);
 		--row-alt: rgba(60, 112, 160, 0.12);
+		--row-hover: rgba(255, 255, 255, 0.076);
 		--body-glow-one: radial-gradient(circle at 82% 18%, rgba(23, 42, 58, 0.55), transparent 26rem);
 		--body-glow-two: radial-gradient(circle at 0% 0%, rgba(9, 30, 48, 0.42), transparent 22rem);
 		--polaroid-bg: #ebe9e5;
@@ -434,8 +452,11 @@ const highlightJsonLine = (line: string) => {
 		--code-card-padding: 24px 28px 20px;
 		--code-card-border: 1px solid var(--line);
 		--code-card-radius: 16px;
-		--code-card-bg: rgba(4, 14, 23, 0.32);
-		--code-card-shadow: inset 0 0 24px rgba(122, 162, 255, 0.03);
+		--code-card-bg: rgba(3, 11, 19, 0.5);
+		--code-card-glaze: linear-gradient(135deg, rgba(120, 158, 204, 0.045), rgba(255, 255, 255, 0.015) 38%, transparent 78%);
+		--code-card-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.08),
+			0 18px 46px rgba(0, 0, 0, 0.18);
 		--shadow: rgba(0, 0, 0, 0.48);
 		--shadow-interactive: 0 12px 26px rgba(0, 0, 0, 0.26);
 	}
@@ -790,36 +811,6 @@ const highlightJsonLine = (line: string) => {
 		text-wrap: balance;
 	}
 
-	.resume-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 14px;
-		margin-top: 24px;
-		color: var(--accent);
-		font-family: var(--mono);
-		font-size: 22px;
-		font-weight: 700;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		transition:
-			color 180ms var(--ease-out-quart),
-			transform 180ms var(--ease-out-quart);
-	}
-
-	.resume-link :global(svg) {
-		transition: transform 180ms var(--ease-out-quart);
-	}
-
-	.resume-link:hover,
-	.resume-link:focus-visible {
-		transform: translateY(-1px);
-	}
-
-	.resume-link:hover :global(svg),
-	.resume-link:focus-visible :global(svg) {
-		transform: translateX(6px);
-	}
-
 	.portrait-stage {
 		position: relative;
 		z-index: 1;
@@ -902,8 +893,7 @@ const highlightJsonLine = (line: string) => {
 	}
 
 	.measure,
-	.blueprint-arc,
-	.blueprint-corner {
+	.blueprint-arc {
 		position: absolute;
 		color: var(--accent-soft);
 		pointer-events: none;
@@ -992,27 +982,6 @@ const highlightJsonLine = (line: string) => {
 		opacity: 0.75;
 	}
 
-	.blueprint-corner {
-		width: 52px;
-		height: 52px;
-		border-color: currentColor;
-		opacity: 0.74;
-	}
-
-	.corner-one {
-		left: 28px;
-		top: 133px;
-		border-left: 1px solid;
-		border-top: 1px solid;
-	}
-
-	.corner-two {
-		right: 4px;
-		bottom: 18px;
-		border-right: 1px solid;
-		border-bottom: 1px solid;
-	}
-
 	.status-rail {
 		display: none;
 	}
@@ -1026,10 +995,14 @@ const highlightJsonLine = (line: string) => {
 		padding: var(--code-card-padding);
 		border: var(--code-card-border);
 		border-radius: var(--code-card-radius);
-		background: var(--code-card-bg);
+		background:
+			var(--code-card-glaze),
+			var(--code-card-bg);
+		backdrop-filter: blur(3px) saturate(1.04);
 		box-shadow: var(--code-card-shadow);
 		color: var(--text);
 		font-family: var(--mono);
+		-webkit-backdrop-filter: blur(3px) saturate(1.04);
 	}
 
 	.code-kicker {
@@ -1087,7 +1060,7 @@ const highlightJsonLine = (line: string) => {
 	}
 
 	.work-section {
-		margin-top: 10px;
+		margin-top: 6px;
 	}
 
 	.section-rule {
@@ -1124,7 +1097,7 @@ const highlightJsonLine = (line: string) => {
 
 	.work-list {
 		overflow: hidden;
-		margin-top: 16px;
+		margin-top: 8px;
 		border: 1px solid var(--line);
 		border-radius: 7px;
 		background: var(--surface);
@@ -1139,8 +1112,9 @@ const highlightJsonLine = (line: string) => {
 			'num title secondary'
 			'num primary secondary';
 		align-items: center;
-		min-height: 94px;
+		min-height: 68px;
 		border-bottom: 1px solid var(--soft-line);
+		background: var(--row-base);
 		transition:
 			background 220ms var(--ease-out-quart),
 			transform 220ms var(--ease-out-quart);
@@ -1155,7 +1129,17 @@ const highlightJsonLine = (line: string) => {
 	}
 
 	.work-row:hover {
-		background: rgba(var(--bg-rgb), 0.2);
+		background: var(--row-hover);
+	}
+
+	.work-row[href] {
+		cursor: pointer;
+	}
+
+	.work-row:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: -2px;
+		background: var(--row-hover);
 	}
 
 	.work-number {
@@ -1165,11 +1149,11 @@ const highlightJsonLine = (line: string) => {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 12px;
+		gap: 8px;
 		border-right: 1px solid var(--line);
 		color: var(--ink);
 		font-family: var(--serif);
-		font-size: 32px;
+		font-size: 24px;
 		line-height: 1;
 	}
 
@@ -1194,10 +1178,10 @@ const highlightJsonLine = (line: string) => {
 	.work-row h3 {
 		grid-area: title;
 		margin: 0;
-		padding: 18px 24px 0;
+		padding: 12px 18px 0;
 		color: var(--ink);
 		font-family: var(--serif);
-		font-size: 42px;
+		font-size: 31px;
 		font-weight: 500;
 		line-height: 1;
 	}
@@ -1209,14 +1193,14 @@ const highlightJsonLine = (line: string) => {
 		min-width: 0;
 		width: fit-content;
 		max-width: 100%;
-		min-height: 36px;
-		padding: 7px 20px;
+		min-height: 28px;
+		padding: 5px 12px;
 		border: 1px solid currentColor;
 		border-radius: 999px;
 		background: rgba(var(--bg-rgb), 0.24);
-		font-size: 15px;
+		font-size: 12px;
 		line-height: 1.1;
-		gap: 12px;
+		gap: 8px;
 		transition:
 			background 180ms var(--ease-out-quart),
 			box-shadow 180ms var(--ease-out-quart),
@@ -1237,14 +1221,14 @@ const highlightJsonLine = (line: string) => {
 
 	.work-pill-primary {
 		grid-area: primary;
-		margin: 4px 24px 17px;
+		margin: 2px 12px 8px;
 	}
 
 	.work-pill-secondary {
 		grid-area: secondary;
 		justify-self: end;
-		margin-right: 30px;
-		min-width: 190px;
+		margin-right: 14px;
+		min-width: 150px;
 	}
 
 	.accent-blue {
@@ -1455,10 +1439,6 @@ const highlightJsonLine = (line: string) => {
 			font-size: 23px;
 		}
 
-		.resume-link {
-			font-size: 17px;
-		}
-
 		pre {
 			font-size: 13px;
 		}
@@ -1469,18 +1449,18 @@ const highlightJsonLine = (line: string) => {
 			grid-template-areas:
 				'num title'
 				'num primary'
-				'num secondary';
-			row-gap: 9px;
-			padding: 14px 0;
+			'num secondary';
+			row-gap: 8px;
+			padding: 8px 0;
 		}
 
 		.work-number {
-			font-size: 26px;
+			font-size: 22px;
 		}
 
 		.work-row h3 {
 			padding: 0 var(--work-content-x);
-			font-size: 35px;
+			font-size: 30px;
 		}
 
 		.work-pill-primary,
@@ -1492,7 +1472,7 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.work-pill {
-			font-size: 13px;
+			font-size: 11px;
 		}
 
 		.footer-contact {
@@ -1594,18 +1574,18 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.work-row {
-			--work-content-x: 20px;
-			grid-template-columns: 58px minmax(0, 1fr);
+			--work-content-x: 16px;
+			grid-template-columns: 52px minmax(0, 1fr);
 		}
 
 		.work-row h3 {
-			font-size: 30px;
+			font-size: 25px;
 		}
 
 		.work-pill {
 			gap: 8px;
-			padding: 7px 14px;
-			font-size: 12px;
+			padding: 5px 10px;
+			font-size: 10px;
 		}
 
 		.work-pill :global(svg) {
@@ -1649,38 +1629,37 @@ const highlightJsonLine = (line: string) => {
 
 	@media (min-width: 820px) and (max-width: 1099px) {
 		.work-row {
-			grid-template-columns: 76px minmax(260px, 1fr) minmax(250px, 270px) minmax(150px, 184px);
+			column-gap: var(--work-pill-gap);
+			grid-template-columns: 76px minmax(0, 1fr) minmax(178px, 300px) max-content;
 			grid-template-areas: 'num title primary secondary';
-			min-height: 82px;
+			min-height: 68px;
 			padding: 0;
 		}
 
 		.work-row h3 {
 			padding: 0 12px 0 24px;
-			font-size: clamp(28px, 3.4vw, 34px);
+			font-size: clamp(26px, 3.2vw, 32px);
 		}
 
 		.work-pill-primary,
 		.work-pill-secondary {
 			margin: 0;
-			max-width: calc(100% - 18px);
+			max-width: 100%;
 		}
 
 		.work-pill-primary {
-			justify-self: center;
-			max-width: 100%;
+			justify-self: end;
 		}
 
 		.work-pill-secondary {
 			justify-self: end;
-			margin-right: 14px;
 			min-width: 150px;
 		}
 
 		.work-pill {
-			min-height: 38px;
-			padding: 7px 14px;
-			font-size: 13px;
+			min-height: 31px;
+			padding: 5px 12px;
+			font-size: 11px;
 		}
 	}
 
@@ -1690,44 +1669,43 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		:global(:root:not([data-theme='light'])) .work-row {
-			grid-template-columns: 76px minmax(260px, 1fr) minmax(250px, 270px) minmax(150px, 184px);
+			column-gap: var(--work-pill-gap);
+			grid-template-columns: 76px minmax(0, 1fr) minmax(178px, 300px) max-content;
 			grid-template-areas: 'num title primary secondary';
-			min-height: 82px;
+			min-height: 68px;
 			padding: 0;
 		}
 
 		:global(:root:not([data-theme='light'])) .work-number {
-			font-size: 30px;
+			font-size: 24px;
 			gap: 8px;
 		}
 
 		:global(:root:not([data-theme='light'])) .work-row h3 {
 			padding: 0 12px 0 24px;
-			font-size: clamp(28px, 3.4vw, 34px);
+			font-size: clamp(26px, 3.2vw, 32px);
 		}
 
 		:global(:root:not([data-theme='light'])) .work-pill-primary,
 		:global(:root:not([data-theme='light'])) .work-pill-secondary {
 			margin: 0;
 			min-width: 0;
-			max-width: calc(100% - 20px);
+			max-width: 100%;
 		}
 
 		:global(:root:not([data-theme='light'])) .work-pill-primary {
-			justify-self: center;
-			max-width: 100%;
+			justify-self: end;
 		}
 
 		:global(:root:not([data-theme='light'])) .work-pill-secondary {
 			justify-self: end;
-			margin-right: 14px;
 			min-width: 150px;
 		}
 
 		:global(:root:not([data-theme='light'])) .work-pill {
-			min-height: 38px;
-			padding: 7px 14px;
-			font-size: 13px;
+			min-height: 31px;
+			padding: 5px 12px;
+			font-size: 11px;
 		}
 	}
 
@@ -1737,51 +1715,50 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		:global(html[data-theme='dark']) .work-row {
-			grid-template-columns: 76px minmax(260px, 1fr) minmax(250px, 270px) minmax(150px, 184px);
+			column-gap: var(--work-pill-gap);
+			grid-template-columns: 76px minmax(0, 1fr) minmax(178px, 300px) max-content;
 			grid-template-areas: 'num title primary secondary';
-			min-height: 82px;
+			min-height: 68px;
 			padding: 0;
 		}
 
 		:global(html[data-theme='dark']) .work-number {
-			font-size: 30px;
+			font-size: 24px;
 			gap: 8px;
 		}
 
 		:global(html[data-theme='dark']) .work-row h3 {
 			padding: 0 12px 0 24px;
-			font-size: clamp(28px, 3.4vw, 34px);
+			font-size: clamp(26px, 3.2vw, 32px);
 		}
 
 		:global(html[data-theme='dark']) .work-pill-primary,
 		:global(html[data-theme='dark']) .work-pill-secondary {
 			margin: 0;
 			min-width: 0;
-			max-width: calc(100% - 20px);
+			max-width: 100%;
 		}
 
 		:global(html[data-theme='dark']) .work-pill-primary {
-			justify-self: center;
-			max-width: 100%;
+			justify-self: end;
 		}
 
 		:global(html[data-theme='dark']) .work-pill-secondary {
 			justify-self: end;
-			margin-right: 14px;
 			min-width: 150px;
 		}
 
 		:global(html[data-theme='dark']) .work-pill {
-			min-height: 38px;
-			padding: 7px 14px;
-			font-size: 13px;
+			min-height: 31px;
+			padding: 5px 12px;
+			font-size: 11px;
 		}
 	}
 
 	@media (min-width: 1100px) {
 		.site-shell {
 			display: grid;
-			grid-template-columns: 304px minmax(0, 1fr);
+			grid-template-columns: 360px minmax(0, 1fr);
 		}
 
 		.mobile-header {
@@ -1793,11 +1770,16 @@ const highlightJsonLine = (line: string) => {
 			top: 0;
 			display: flex;
 			flex-direction: column;
-			min-height: 100vh;
-			padding: 38px 36px 28px;
+			height: 100vh;
+			max-height: 100vh;
+			min-height: 0;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			padding: 38px 24px 28px;
 			border-right: 1px solid var(--line);
 			background: rgba(var(--bg-rgb), 0.52);
 			backdrop-filter: blur(2px);
+			scrollbar-gutter: stable;
 		}
 
 		.sidebar-logo {
@@ -1813,26 +1795,45 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.sidebar-nav .nav-link {
+			display: grid;
+			grid-template-columns: 30px max-content;
+			align-items: center;
 			font-size: 18px;
-			gap: 25px;
+			column-gap: 25px;
 		}
 
 		.sidebar-theme-toggle {
+			display: grid;
+			grid-template-columns: 30px max-content;
+			align-items: center;
 			width: auto;
 			height: auto;
 			border: 0;
 			background: transparent;
 			justify-content: flex-start;
-			gap: 25px;
+			column-gap: 25px;
 			color: var(--text);
 			font-family: var(--sans);
 			font-size: 18px;
 			line-height: 1;
 		}
 
+		.sidebar-theme-toggle:hover,
+		.sidebar-theme-toggle:focus-visible {
+			border-color: transparent;
+			background: transparent;
+			box-shadow: none;
+		}
+
+		.sidebar-theme-toggle .theme-icon {
+			width: 30px;
+			height: 30px;
+		}
+
 		.sidebar-theme-toggle :global(svg) {
 			width: 22px;
 			height: 22px;
+			margin: auto;
 		}
 
 		.sidebar-theme-toggle .theme-toggle-label {
@@ -1840,22 +1841,35 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.sidebar-code {
-			padding: 36px 0 32px;
+			padding: 32px 0 30px;
 			border-bottom: 1px solid var(--line);
+		}
+
+		.sidebar .code-card {
+			padding: 20px 12px 18px;
+			border-radius: 14px;
 		}
 
 		.sidebar .code-kicker {
 			font-size: 11px;
-			letter-spacing: 0.16em;
+			letter-spacing: 0.12em;
 		}
 
 		.sidebar pre {
-			font-size: 11px;
-			line-height: 1.56;
+			overflow-x: auto;
+			padding-bottom: 4px;
+			font-size: 9.5px;
+			line-height: 1.5;
 		}
 
 		.sidebar .code-row {
-			grid-template-columns: 28px minmax(0, 1fr);
+			grid-template-columns: 24px max-content;
+			width: max-content;
+			min-width: 100%;
+		}
+
+		.sidebar code {
+			white-space: pre;
 		}
 
 		.sidebar-contact {
@@ -1890,34 +1904,34 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.hero {
-			grid-template-columns: minmax(0, 1fr) 466px;
-			grid-template-rows: auto auto;
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-rows: auto auto auto;
 			align-items: center;
-			justify-items: start;
-			gap: 42px;
-			min-height: 526px;
+			justify-items: center;
+			gap: 20px;
+			min-height: auto;
 		}
 
 		.hero-heading,
 		.hero-actions {
 			grid-column: 1;
-			justify-items: start;
+			justify-items: center;
 		}
 
 		.hero-heading {
-			grid-row: 1;
-			align-self: end;
-			padding-top: 26px;
+			grid-row: 2;
+			align-self: center;
+			padding-top: 0;
 		}
 
 		.hero-actions {
-			grid-row: 2;
-			align-self: start;
+			grid-row: 3;
+			align-self: center;
 		}
 
 		.eyebrow {
-			justify-content: flex-start;
-			margin-bottom: 19px;
+			justify-content: center;
+			margin-bottom: 18px;
 		}
 
 		.eyebrow p {
@@ -1925,38 +1939,28 @@ const highlightJsonLine = (line: string) => {
 			letter-spacing: 0.24em;
 		}
 
-		.eyebrow span:first-child {
-			display: none;
-		}
-
 		.eyebrow span {
-			width: 266px;
+			width: clamp(88px, 18vw, 220px);
 		}
 
 		h1 {
 			font-size: 100px;
-			text-align: left;
+			text-align: center;
 		}
 
 		.intro {
 			width: 552px;
-			margin-top: 30px;
+			margin-top: 0;
 			font-size: 22px;
 			line-height: 1.55;
-			text-align: left;
-		}
-
-		.resume-link {
-			margin-top: 28px;
-			font-size: 15px;
-			letter-spacing: 0.18em;
+			text-align: center;
 		}
 
 		.portrait-stage {
-			grid-column: 2;
-			grid-row: 1 / span 2;
+			grid-column: 1;
+			grid-row: 1;
 			order: initial;
-			width: 466px;
+			width: min(500px, 64vw);
 			height: 482px;
 			margin-top: 0;
 		}
@@ -1965,7 +1969,7 @@ const highlightJsonLine = (line: string) => {
 			--polaroid-rotate: -6.4deg;
 			width: 386px;
 			height: auto;
-			left: 40%;
+			left: 50%;
 			top: -8px;
 			padding: 16px 16px 88px;
 		}
@@ -1987,16 +1991,6 @@ const highlightJsonLine = (line: string) => {
 			top: 328px;
 			width: 108px;
 			height: 108px;
-		}
-
-		.corner-one {
-			left: 42px;
-			top: 280px;
-		}
-
-		.corner-two {
-			right: 44px;
-			bottom: 16px;
 		}
 
 		.status-rail {
@@ -2042,44 +2036,45 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.work-section {
-			margin-top: 34px;
+			margin-top: 24px;
 		}
 
 		.work-list {
-			margin-top: 14px;
+			margin-top: 10px;
 			border-radius: 0;
 		}
 
 		.work-row {
-			grid-template-columns: 76px minmax(280px, 1fr) minmax(178px, 300px) minmax(142px, 244px);
+			column-gap: var(--work-pill-gap);
+			grid-template-columns: 76px minmax(280px, 1fr) minmax(178px, 300px) max-content;
 			grid-template-areas: 'num title primary secondary';
-			min-height: 99px;
+			min-height: 74px;
 		}
 
 		.work-row h3 {
 			padding: 0 12px 0 clamp(18px, 3.4vw, 50px);
-			font-size: clamp(30px, 2.8vw, 36px);
+			font-size: clamp(26px, 2.2vw, 32px);
 		}
 
 		.work-pill-primary,
 		.work-pill-secondary {
 			margin: 0;
-			max-width: calc(100% - 16px);
+			max-width: 100%;
 		}
 
 		.work-pill-primary {
-			justify-self: center;
+			justify-self: end;
 		}
 
 		.work-pill-secondary {
-			margin-right: clamp(12px, 3vw, 40px);
+			justify-self: end;
 			min-width: 142px;
 		}
 
 		.work-pill {
-			min-height: 42px;
-			padding: 9px 21px;
-			font-size: 16px;
+			min-height: 30px;
+			padding: 6px 14px;
+			font-size: 12px;
 		}
 
 		.site-footer {
@@ -2094,9 +2089,9 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.hero {
-			grid-template-columns: minmax(0, 1fr) clamp(320px, 30vw, 380px);
-			gap: clamp(24px, 3vw, 36px);
-			min-height: 450px;
+			grid-template-columns: minmax(0, 1fr);
+			gap: 18px;
+			min-height: auto;
 		}
 
 		.eyebrow {
@@ -2109,7 +2104,7 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.eyebrow span {
-			width: clamp(82px, 12vw, 140px);
+			width: clamp(78px, 13vw, 126px);
 		}
 
 		h1 {
@@ -2117,13 +2112,13 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.intro {
-			width: min(100%, 360px);
+			width: min(100%, 520px);
 			font-size: 20px;
 			line-height: 1.45;
 		}
 
 		.portrait-stage {
-			width: 100%;
+			width: min(430px, 58vw);
 			height: 390px;
 		}
 
@@ -2151,16 +2146,6 @@ const highlightJsonLine = (line: string) => {
 			top: 258px;
 		}
 
-		.corner-one {
-			left: 12px;
-			top: 214px;
-		}
-
-		.corner-two {
-			right: 12px;
-			bottom: 14px;
-		}
-
 		.status-rail {
 			display: none;
 		}
@@ -2173,28 +2158,28 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.work-row h3 {
-			padding: 16px 20px 0 28px;
-			font-size: 34px;
+			padding: 14px 20px 6px 24px;
+			font-size: 28px;
 		}
 
 		.work-pill-primary {
 			justify-self: start;
-			margin: 4px 28px 17px;
+			margin: 6px 22px 12px;
 			max-width: calc(100% - 56px);
 		}
 
 		.work-pill-secondary {
 			align-self: center;
 			justify-self: end;
-			margin-right: 18px;
-			min-width: 150px;
+			margin-right: 14px;
+			min-width: 140px;
 			max-width: calc(100% - 18px);
 		}
 
 		.work-pill {
-			min-height: 38px;
-			padding: 8px 16px;
-			font-size: 14px;
+			min-height: 33px;
+			padding: 7px 14px;
+			font-size: 13px;
 		}
 	}
 
@@ -2210,7 +2195,7 @@ const highlightJsonLine = (line: string) => {
 
 	@media (min-width: 1500px) {
 		.site-shell {
-			grid-template-columns: 318px minmax(0, 1fr);
+			grid-template-columns: 380px minmax(0, 1fr);
 		}
 
 		.page-grid {
@@ -2222,7 +2207,7 @@ const highlightJsonLine = (line: string) => {
 		}
 
 		.hero {
-			grid-template-columns: minmax(0, 1fr) 500px;
+			grid-template-columns: minmax(0, 1fr);
 		}
 
 		.polaroid {

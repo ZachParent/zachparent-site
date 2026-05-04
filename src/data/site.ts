@@ -12,6 +12,23 @@ export type IconName =
 	| 'cube'
 	| 'tag';
 
+type WorkAccent = 'blue' | 'amber' | 'green' | 'neutral';
+
+type WorkPill = {
+	label: string;
+	icon: IconName;
+	accent: WorkAccent;
+};
+
+export type WorkItem = {
+	number: string;
+	title: string;
+	primary: WorkPill;
+	secondary: WorkPill;
+	href?: string;
+	external?: boolean;
+};
+
 export const navItems = [
 	{
 		label: 'LinkedIn',
@@ -25,13 +42,12 @@ export const homeContent = {
 	role: 'Forward Deployed Engineer',
 	name: 'Zach Parent',
 	intro: 'I build software systems that matter to people.',
-	resumeLabel: 'View Resume',
 	codeLabel: '// NOT YOUR TYPICAL ENGINEER.',
 	measurements: {
 		vertical: '720',
 		horizontal: '1280',
 	},
-	signoff: ['AGI is coming.', 'Let\'s ensure it benefits everyone'],
+	signoff: ['Let\'s ensure AI benefits everyone'],
 	code: {
 		name: 'Zach Parent',
 		current_role: 'Forward Deployed Engineer',
@@ -40,14 +56,11 @@ export const homeContent = {
 			'artificial intelligence',
 			'customer success',
 		],
-		principles: {
-			open_source: true,
-			impact: true,
-		},
 	},
 } as const;
 
-export const workItems = [
+// Add href, and external when needed, to make a row clickable without changing its visual style.
+export const workItems: WorkItem[] = [
 	{
 		number: '01',
 		title: 'OpenAI',
@@ -64,9 +77,9 @@ export const workItems = [
 	},
 	{
 		number: '02',
-		title: "Master's Degree in AI",
+		title: "UPC (BarcelonaTech)",
 		primary: {
-			label: 'UPC (BarcelonaTech)',
+			label: 'Master\'s Degree in AI',
 			icon: 'cap',
 			accent: 'amber',
 		},
@@ -79,8 +92,10 @@ export const workItems = [
 	{
 		number: '03',
 		title: 'Skatefolio',
+		href: 'https://skatefolio.com',
+		external: true,
 		primary: {
-			label: 'Video platform made just for skaters',
+			label: 'Skate video platform',
 			icon: 'cube',
 			accent: 'green',
 		},
@@ -124,14 +139,6 @@ export const contactItems = [
 	{
 		label: 'San Francisco, CA',
 		icon: 'map',
-	},
-	{
-		label: 'PST (UTC-8)',
-		icon: 'clock',
-	},
-	{
-		label: 'Available for new opportunities',
-		icon: 'opportunity',
 	},
 	{
 		label: 'zachparent at duck dot com',
