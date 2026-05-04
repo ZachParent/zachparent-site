@@ -7,8 +7,12 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run build:render-og",
+    "build:render-og": "astro build && node ./scripts/generate-og-image.mjs --no-build",
+    "build:no-og": "astro build",
     "preview": "astro preview",
+    "generate:og-image": "node ./scripts/generate-og-image.mjs",
+    "generate:og-image:open": "node ./scripts/generate-og-image.mjs --open",
     "astro": "astro"
   },
   "dependencies": {

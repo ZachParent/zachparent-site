@@ -2,12 +2,29 @@
 interface Props {
 	title?: string;
 	description?: string;
+	theme?: 'dark' | 'light';
+	siteName?: string;
+	canonicalUrl?: string;
+	ogImage?: string;
+	ogImageAlt?: string;
+	twitterCard?: 'summary' | 'summary_large_image';
+	noIndex?: boolean;
 }
 
 const {
 	title = 'Zach Parent | Software Developer',
 	description = 'Zach Parent builds reliable, scalable software that solves real problems and empowers people.',
+	theme,
+	siteName = 'Zach Parent',
+	canonicalUrl,
+	ogImage = '/og-image.png',
+	ogImageAlt = `${siteName} portfolio`,
+	twitterCard = 'summary_large_image',
+	noIndex = false,
 } = Astro.props;
+
+const canonical = canonicalUrl ?? Astro.url.href;
+const absoluteOgImage = new URL(ogImage, canonical).href;
 ---
 
 <!doctype html>
@@ -15,26 +32,47 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" sizes="any" />
+		<link rel="shortcut icon" href="/favicon.svg?v=4" type="image/svg+xml" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#071f3a" />
+		<meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:image" content={absoluteOgImage} />
+		<meta property="og:image:alt" content={ogImageAlt} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content={twitterCard} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={absoluteOgImage} />
 		<script is:inline>
 			(() => {
 				document.documentElement.classList.add('js');
-				const storedTheme = localStorage.getItem('theme');
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				const theme = storedTheme === 'light' || storedTheme === 'dark'
-					? storedTheme
-					: prefersDark
-						? 'dark'
-						: 'light';
+				const forcedTheme = `${theme || ''}`;
+				const resolvedTheme = forcedTheme === 'light' || forcedTheme === 'dark'
+					? forcedTheme
+					: (() => {
+						const storedTheme = localStorage.getItem('theme');
+						const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+						return storedTheme === 'light' || storedTheme === 'dark'
+							? storedTheme
+							: prefersDark
+								? 'dark'
+								: 'light';
+					})();
 
-				document.documentElement.dataset.theme = theme;
-				document.documentElement.style.colorScheme = theme;
+				document.documentElement.dataset.theme = resolvedTheme;
+				document.documentElement.style.colorScheme = resolvedTheme;
 			})();
 		</script>
 		<title>{title}</title>
+		<link rel="canonical" href={canonical} />
 	</head>
 	<body>
 		<slot />

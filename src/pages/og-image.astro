@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { homeContent } from '../data/site';
+---
+
+<Layout
+	title="Zach Parent | Forward Deployed Engineer"
+	description="Zach Parent builds reliable, scalable software systems with measurable real-world impact."
+	canonicalUrl="https://zachparent.com/og-image"
+	ogImage="/og-image.png"
+	ogImageAlt="Zach Parent, Forward Deployed Engineer, profile hero preview"
+	twitterCard="summary_large_image"
+	theme="light"
+	noIndex={true}
+>
+	<main class="og-page">
+		<div class="bg-grid" aria-hidden="true"></div>
+		<div class="overlay" aria-hidden="true"></div>
+		<section class="hero-shell">
+			<div class="title-row">
+				<p class="deployed-role">{homeContent.role}</p>
+				<h1>{homeContent.name}</h1>
+			</div>
+			<div class="polaroid">
+				<img src="/images/zach-parent-portrait-light.png" alt="Zach Parent portrait" />
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	html,
+	body,
+	:global(html),
+	:global(body) {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.55), transparent 24rem),
+			radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.25), transparent 20rem),
+			linear-gradient(140deg, #f8f3ea, #fff6e9 52%, #ebe7df);
+	}
+
+	.og-page {
+		width: 100vw;
+		min-height: 100vh;
+		height: 100vh;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		position: relative;
+		padding: clamp(22px, 3.2vw, 42px) clamp(30px, 4vw, 52px);
+		overflow: hidden;
+		color: var(--text);
+		box-sizing: border-box;
+		background:
+			radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.55), transparent 24rem),
+			radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.25), transparent 20rem),
+			linear-gradient(140deg, #f8f3ea, #fff6e9 52%, #ebe7df);
+	}
+
+	.bg-grid,
+	.overlay {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.bg-grid {
+		background-image:
+			linear-gradient(rgba(60, 89, 119, 0.14) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(60, 89, 119, 0.14) 1px, transparent 1px);
+		background-size: 28px 28px, 28px 28px;
+		mix-blend-mode: multiply;
+		opacity: 0.24;
+	}
+
+	.overlay {
+		background:
+			repeating-linear-gradient(90deg, transparent 0, transparent 90px, rgba(255, 255, 255, 0.06) 90px, rgba(255, 255, 255, 0.06) 91px),
+			radial-gradient(circle at 84% 20%, rgba(10, 99, 231, 0.24), transparent 26rem);
+		opacity: 0.38;
+	}
+
+	.hero-shell {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		width: min(1060px, 100%);
+		height: 100%;
+		border: 1px solid rgba(48, 77, 105, 0.42);
+		border-radius: 24px;
+		padding: clamp(28px, 4vw, 44px);
+		box-shadow: 0 26px 56px rgba(36, 30, 22, 0.22);
+		background: linear-gradient(
+			160deg,
+			rgba(255, 255, 255, 0.68) 0%,
+			rgba(255, 255, 255, 0.5) 34%,
+			rgba(255, 255, 255, 0.08) 100%
+	);
+		backdrop-filter: blur(2px);
+		box-sizing: border-box;
+		--serif: 'New York', 'NewYork', 'Bodoni 72', Didot, 'Iowan Old Style', Georgia, serif;
+		--ink: #071f3a;
+		--accent: #0a63e7;
+	}
+
+	.title-row {
+		line-height: 1.05;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		color: #0d2f55;
+	}
+
+	.deployed-role {
+		margin: 0;
+		font: 500 30px/1.1 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		letter-spacing: 0.015em;
+	}
+
+	h1 {
+		margin: 0;
+		font-family: var(--serif);
+		font-size: 108px;
+		font-weight: 500;
+		line-height: 0.92;
+		letter-spacing: 0.001em;
+		color: var(--ink);
+	}
+
+	.polaroid {
+		position: absolute;
+		right: clamp(28px, 5vw, 48px);
+		top: 50%;
+		transform: translateY(-50%) rotate(-3deg);
+		width: clamp(180px, 22vw, 265px);
+	}
+
+	.polaroid img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border: 0;
+		border-radius: 0;
+		box-shadow: 0 18px 35px rgba(36, 30, 22, 0.24);
+	}
+
+	@media (max-width: 1080px) {
+		h1 {
+			font-size: 82px;
+		}
+
+		.deployed-role {
+			font-size: 26px;
+		}
+
+		.polaroid {
+			right: 24px;
+			width: 220px;
+		}
+	}
+</style>

@@ -146,13 +146,4 @@ export const contactItems = [
 	},
 ] as const;
 
-export const sidebarGroups = [
-	{
-		label: 'Focus',
-		items: ['Systems', 'Clarity', 'Impact'],
-	},
-	{
-		label: 'Approach',
-		items: ['Design', 'Build', 'Iterate'],
-	},
-] as const;
+export const sidebarGroups: { label: string; items: string[] }[] = [];
