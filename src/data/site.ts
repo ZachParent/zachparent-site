@@ -1,7 +1,9 @@
 export type IconName =
 	| 'file'
 	| 'user'
+	| 'github'
 	| 'linkedin'
+	| 'external'
 	| 'map'
 	| 'clock'
 	| 'mail'
@@ -12,28 +14,27 @@ export type IconName =
 	| 'cube'
 	| 'tag';
 
-type WorkAccent = 'blue' | 'amber' | 'green' | 'neutral';
-
-type WorkPill = {
-	label: string;
-	icon: IconName;
-	accent: WorkAccent;
-};
-
 export type WorkItem = {
-	number: string;
+	period: string;
 	title: string;
-	primary: WorkPill;
-	secondary: WorkPill;
+	role: string;
+	summary: string;
 	href?: string;
 	external?: boolean;
 };
 
 export const navItems = [
 	{
+		label: 'GitHub',
+		href: 'https://github.com/ZachParent',
+		icon: 'github',
+		external: true,
+	},
+	{
 		label: 'LinkedIn',
 		href: 'https://www.linkedin.com/in/zachparent/',
 		icon: 'linkedin',
+		external: true,
 	},
 ] as const;
 
@@ -41,7 +42,9 @@ export const homeContent = {
 	logo: 'ZP',
 	role: 'Forward Deployed Engineer',
 	name: 'Zach Parent',
-	intro: 'I build software systems that matter to people.',
+	intro: 'I build production software and applied AI systems with a bias toward real users, clear interfaces, and reliable execution.',
+	location: 'San Francisco, CA',
+	email: 'zachparent at duck dot com',
 	codeLabel: '// NOT YOUR TYPICAL ENGINEER.',
 	measurements: {
 		vertical: '720',
@@ -62,76 +65,36 @@ export const homeContent = {
 // Add href, and external when needed, to make a row clickable without changing its visual style.
 export const workItems: WorkItem[] = [
 	{
-		number: '01',
+		period: '2025-present',
 		title: 'OpenAI',
-		primary: {
-			label: 'Forward Deployed Engineer',
-			icon: 'code',
-			accent: 'blue',
-		},
-		secondary: {
-			label: '2025-Present',
-			icon: 'calendar',
-			accent: 'neutral',
-		},
+		role: 'Forward Deployed Engineer',
+		summary: 'Building with customers at the edge of applied AI and production software.',
 	},
 	{
-		number: '02',
+		period: '2024-2025',
 		title: "UPC (Barcelona Tech)",
-		primary: {
-			label: 'Master\'s Degree in AI',
-			icon: 'cap',
-			accent: 'amber',
-		},
-		secondary: {
-			label: '2024-2025',
-			icon: 'calendar',
-			accent: 'neutral',
-		},
+		role: 'Master\'s Degree in AI',
+		summary: 'Graduate study in artificial intelligence and machine learning systems.',
 	},
 	{
-		number: '03',
+		period: '2022-2024',
 		title: 'Skatefolio',
 		href: 'https://skatefolio.com',
 		external: true,
-		primary: {
-			label: 'Skate video platform',
-			icon: 'cube',
-			accent: 'green',
-		},
-		secondary: {
-			label: '2022-2024',
-			icon: 'calendar',
-			accent: 'neutral',
-		},
+		role: 'Founder / Builder',
+		summary: 'Created a skate video platform for organizing, sharing, and revisiting clips.',
 	},
 	{
-		number: '04',
+		period: '2019-2022',
 		title: 'Google',
-		primary: {
-			label: 'Software Engineer',
-			icon: 'code',
-			accent: 'blue',
-		},
-		secondary: {
-			label: '2019-2022',
-			icon: 'calendar',
-			accent: 'neutral',
-		},
+		role: 'Software Engineer',
+		summary: 'Worked on reliable, large-scale production systems.',
 	},
 	{
-		number: '05',
+		period: '2015-2019',
 		title: 'University of Michigan',
-		primary: {
-			label: 'Aerospace Engineering and Computer Science',
-			icon: 'cap',
-			accent: 'amber',
-		},
-		secondary: {
-			label: '2015-2019',
-			icon: 'calendar',
-			accent: 'neutral',
-		},
+		role: 'Aerospace Engineering and Computer Science',
+		summary: 'Studied engineering fundamentals, software, and systems thinking.',
 	},
 ] as const;
 
