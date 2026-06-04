@@ -36,7 +36,7 @@ const absoluteOgImage = new URL(ogImage, canonical).href;
 		<link rel="shortcut icon" href="/favicon.svg?v=4" type="image/svg+xml" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#071f3a" />
+		<meta name="theme-color" content="#3f3f3d" />
 		<meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
@@ -51,10 +51,9 @@ const absoluteOgImage = new URL(ogImage, canonical).href;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={absoluteOgImage} />
-		<script is:inline>
+		<script define:vars={{ forcedTheme: theme ?? '' }}>
 			(() => {
 				document.documentElement.classList.add('js');
-				const forcedTheme = `${theme || ''}`;
 				const resolvedTheme = forcedTheme === 'light' || forcedTheme === 'dark'
 					? forcedTheme
 					: (() => {
