@@ -628,7 +628,7 @@ const credentials = [
 			grid-template-columns: 1fr;
 			grid-template-rows: none;
 			align-items: start;
-			gap: 26px;
+			gap: clamp(16px, 3vw, 24px);
 			padding: 0 0 64px;
 		}
 
@@ -689,7 +689,7 @@ const credentials = [
 		}
 
 		.portrait-sketch {
-			width: min(218px, 62vw);
+			width: min(calc(100% - 40px), 420px);
 		}
 
 		.micro-row {
@@ -718,7 +718,8 @@ const credentials = [
 		}
 
 		.portrait-sketch {
-			width: min(190px, 62vw);
+			width: calc(100% - 16px);
+			max-width: none;
 		}
 
 		.utility-art {
@@ -828,20 +829,4 @@ const credentials = [
 		}
 	}
 
-	@media (max-width: 960px) {
-		.specimen-board {
-			row-gap: clamp(30px, 6vw, 52px);
-		}
-
-		.portrait-sketch {
-			width: min(calc(100% - 40px), 420px);
-		}
-	}
-
-	@media (max-width: 520px) {
-		.portrait-sketch {
-			width: calc(100% - 16px);
-			max-width: none;
-		}
-	}
 </style>
