@@ -1,6 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import Layout from '../layouts/Layout.astro';
+import portraitSketch from '../assets/zach-parent-sketch-palette.png';
 
 const profile = {
 	name: 'Zach Parent',
@@ -78,7 +80,18 @@ const credentials = [
 					<span></span>
 				</div>
 				<div class="object-body">
-					<img class="portrait-sketch" src="/images/zach-parent-sketch-palette.png" alt="" loading="eager" />
+					<div class="portrait-frame">
+						<Picture
+							class="portrait-image"
+							src={portraitSketch}
+							formats={['avif', 'webp']}
+							widths={[320, 420, 540, 700]}
+							sizes="(max-width: 430px) calc(100vw - 72px), (max-width: 960px) min(calc(100vw - 108px), 420px), (min-width: 1600px) 360px, 320px"
+							alt=""
+							loading="eager"
+							decoding="async"
+						/>
+					</div>
 					<div class="micro-row">
 						<span></span>
 						<span></span>
@@ -433,13 +446,25 @@ const credentials = [
 		overflow: hidden;
 	}
 
-	.portrait-sketch {
+	.portrait-frame {
 		display: block;
 		width: 100%;
 		aspect-ratio: 1;
 		border: 3px solid var(--line);
 		background: var(--paper-mid);
+		overflow: hidden;
+	}
+
+	.portrait-frame :global(picture),
+	.portrait-frame :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.portrait-frame :global(img) {
 		object-fit: cover;
+		object-position: center;
 	}
 
 	.micro-row {
@@ -688,7 +713,7 @@ const credentials = [
 			min-height: clamp(360px, 48svh, 430px);
 		}
 
-		.portrait-sketch {
+		.portrait-frame {
 			width: min(calc(100% - 40px), 420px);
 		}
 
@@ -717,7 +742,7 @@ const credentials = [
 			padding: 28px;
 		}
 
-		.portrait-sketch {
+		.portrait-frame {
 			width: calc(100% - 16px);
 			max-width: none;
 		}
@@ -803,7 +828,7 @@ const credentials = [
 			padding: 88px 54px 0;
 		}
 
-		.portrait-sketch {
+		.portrait-frame {
 			width: min(100%, 360px);
 		}
 
